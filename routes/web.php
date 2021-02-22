@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CommmentsController;
+use App\Http\Controllers;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::resource('comments', 'CommentsController');
-// Route::resource('comics','ComicsController');
-Route::get('/comments', 'CommentsController@index');
+Route::resource('comments', 'App\Http\Controllers\CommentsController');
+Route::resource('comics', 'App\Http\Controllers\ComicsController');

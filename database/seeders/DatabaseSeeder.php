@@ -33,14 +33,14 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('series')->insert([
             'name' => 'Mister Miracle',
-            'release_date' => '2013',
+            'release_date' => '2013-01-01',
             'editorial' => 'Marvel Comics',
             'rating' => 4.9,
             
         ]);
         DB::table('series')->insert([
             'name' => 'Batman: The Dark Knight Returns',
-            'release_date' => '1986',
+            'release_date' => '1986-01-01',
             'editorial' => 'DC Comics',
             'rating' => 4.9,
             

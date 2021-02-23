@@ -15,7 +15,7 @@ use App\Http\Controllers;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 //Ruta al controlador de las Commentarios

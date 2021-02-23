@@ -18,5 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Ruta al controlador de las Commentarios
 Route::resource('comments', 'App\Http\Controllers\CommentsController');
+
+//Ruta al controlador de las Comics
 Route::resource('comics', 'App\Http\Controllers\ComicsController');
+
+//Ruta al controlador de las Series
+Route::resource('series', 'App\Http\Controllers\SeriesController');
+
+//Ruta al controlador del Usuario
+Route::resource('user', 'App\Http\Controllers\UsersController');

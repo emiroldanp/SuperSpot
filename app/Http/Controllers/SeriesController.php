@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Serie;
 
 class SeriesController extends Controller
 {
@@ -13,8 +14,9 @@ class SeriesController extends Controller
      */
     public function index()
     {
-        //
-        return view('series.series');
+        $series = Serie::all();
+    
+        return view('index', ['series' => $series]);
     }
 
     /**
@@ -47,6 +49,8 @@ class SeriesController extends Controller
     public function show($id)
     {
         //
+        $serie = Serie::find($id);
+        return view('series.serie', ['serie'=>$serie]);
     }
 
     /**

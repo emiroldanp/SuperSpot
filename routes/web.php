@@ -14,9 +14,7 @@ use App\Http\Controllers;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'App\Http\Controllers\SeriesController@index' );
 
 //Ruta al controlador de las Commentarios
 Route::resource('comments', 'App\Http\Controllers\CommentsController');

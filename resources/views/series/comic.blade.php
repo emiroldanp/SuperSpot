@@ -8,11 +8,10 @@
 </head>
 <body>
     <h1>Comic</h1>
+
     <table>
-        <tr>
-            <th>Volumen</th>
-            <th>Fecha</th>
-        </tr>
+
     </table>
+    <input type="text"><button type="submit">enviar</button>
 </body>
 </html>

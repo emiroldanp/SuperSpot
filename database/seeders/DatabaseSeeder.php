@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use DB;
+use Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,5 +16,35 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        DB::table('series')->insert([
+
+            'name' => 'Watchmen',
+            'release_date' => '1986-09-01',
+            'editorial' => 'DC Comics',
+            'rating' => 4.9,
+            
+        ]);
+        DB::table('series')->insert([
+            'name' => 'Bone',
+            'release_date' => '1991-07-01',
+            'editorial' => 'Image Comics',
+            'rating' => 4.9,
+            
+        ]);
+        DB::table('series')->insert([
+            'name' => 'Mister Miracle',
+            'release_date' => '2013',
+            'editorial' => 'Marvel Comics',
+            'rating' => 4.9,
+            
+        ]);
+        DB::table('series')->insert([
+            'name' => 'Batman: The Dark Knight Returns',
+            'release_date' => '1986',
+            'editorial' => 'DC Comics',
+            'rating' => 4.9,
+            
+        ]);
     }
+    
 }

@@ -30,12 +30,12 @@
             @foreach ($comments as $comment)
             <tr>
                 <th>{{$comment->content}}</th>
-                <th><a href="">Editar</a></th>
+                <td><a href="{{route('comments.edit', $comment->id)}}">Editar</a></td>
                 <th>
                     <form action="{{route('comments.destroy', $comment->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Delete</button>
+                        <button type="submit">Borrar</button>
                     </form>
                 </th>
                

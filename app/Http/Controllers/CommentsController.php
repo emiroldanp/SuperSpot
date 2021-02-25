@@ -68,6 +68,8 @@ class CommentsController extends Controller
     public function edit($id)
     {
         //
+        $comment = Comment::find($id);
+        return view('series.commentsedit', ['comment' => $comment]);
     }
 
     /**
@@ -80,6 +82,12 @@ class CommentsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $arr = $request->input();
+        $comment = Comment::find($id);
+        $comment->content = $arr['content'];
+        $id_serie =  $comment->serie_id;
+        $comment -> save();
+        return redirect()->route('series.show', $id_serie);
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Serie;
+use App\Models\Comment;
 
 class SeriesController extends Controller
 {
@@ -15,7 +16,8 @@ class SeriesController extends Controller
     public function index()
     {
         $series = Serie::all();
-    
+        
+        
         return view('index', ['series' => $series]);
     }
 
@@ -50,8 +52,17 @@ class SeriesController extends Controller
     {
         //
         $serie = Serie::find($id);
-        return view('series.serie', ['serie'=>$serie]);
+        
+        try {
+            $comments = $serie -> comments;
+            return view('series.serie', ['serie'=>$serie], ['comments'=>$comments]);
+        } catch (\Throwable $th) {
+            //dd($th);
+            return view('series.serie', ['serie'=>$serie]);
+        }
+       
     }
+       
 
     /**
      * Show the form for editing the specified resource.

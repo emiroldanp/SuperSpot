@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UsersController extends Controller
 {
@@ -13,8 +14,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
-        return view('user');
+        
+        $users = User::all();
+        return view('user.index', ['users' => $users]);
     }
 
     /**
@@ -38,6 +40,13 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         //
+        $arr = $request->input();
+        $user = new User();
+        $user->name = $arr['name'];
+        $user->email = $arr['email'];
+        $user->password = $arr['password'];
+        $user->save();
+        return redirect()->route('user.index');
     }
 
     /**
@@ -57,9 +66,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('user.edit', ['user' => $user]);
     }
 
     /**
@@ -69,9 +78,14 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $arr = $request->input();
+        $user->name = $arr['name'];
+        $user->email = $arr['email'];
+        $user->password = $arr['password'];
+        $user->save();
+        return redirect()->route('user.index');
     }
 
     /**
@@ -80,8 +94,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('user.index');
     }
 }

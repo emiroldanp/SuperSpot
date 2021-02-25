@@ -9,8 +9,8 @@ class Comment extends Model
 {
     use HasFactory;
 
-    public function comic()
+    public function serie()
     {
-        return $this->belongsTo(Comic::class);
+        return $this->belongsTo(Serie::class);
     }
 }

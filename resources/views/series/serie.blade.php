@@ -21,5 +21,37 @@
             <th><a href="{{route('comics.index')}}">1</a></th>
         </tbody>
     </table>
+    <h4>Comentarios</h4>
+    <table>
+        <thead>
+            
+        </thead>
+        <tbody>
+            @foreach ($comments as $comment)
+            <tr>
+                <th>{{$comment->content}}</th>
+                <th><a href="">Editar</a></th>
+                <th>
+                    <form action="{{route('comments.destroy', $comment->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Delete</button>
+                    </form>
+                </th>
+               
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+    <form action="{{route('comments.store')}}" method = "POST">
+        @csrf
+        <div>
+            <label for="">Apoya a otros con un comentario</label>
+            <input type="text" name='content'>
+            <input type="hidden" name='id_serie' value= {{$serie->id}}>
+        </div>
+
+        <input type = 'submit' value = 'Submit'>
+    </form>
 </body>
 </html>

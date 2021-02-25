@@ -17,7 +17,8 @@ class CreateCommentsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string("content");
-
+            $table->foreignId('serie_id');
+            //$table->foreignId('user_id');
 
         });
     }

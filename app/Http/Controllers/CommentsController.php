@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use App\Models\Serie;
 
 class CommentsController extends Controller
 {
@@ -37,6 +38,14 @@ class CommentsController extends Controller
     public function store(Request $request)
     {
         //
+        $arr = $request->input();
+        $comment = new Comment();
+        $comment->content = $arr['content'];
+        $id_serie = $arr['id_serie'];
+        $serie = Serie::find($id_serie)->comments()->save($comment);
+        return redirect()->route('series.show', $id_serie);
+
+
     }
 
     /**
@@ -82,5 +91,9 @@ class CommentsController extends Controller
     public function destroy($id)
     {
         //
+        $comment = Comment::find($id);
+        $id_serie =  $comment->serie_id;
+        $comment->delete();
+        return redirect()->route('series.show', $id_serie);
     }
 }

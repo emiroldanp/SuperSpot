@@ -9,6 +9,11 @@ class Serie extends Model
 {
     use HasFactory;
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function authors()
     {
         return $this->belongsToMany(Author::class);

@@ -57,7 +57,7 @@ class SeriesController extends Controller
             $comments = $serie -> comments;
             return view('series.serie', ['serie'=>$serie], ['comments'=>$comments]);
         } catch (\Throwable $th) {
-            //dd($th);
+            
             return view('series.serie', ['serie'=>$serie]);
         }
        

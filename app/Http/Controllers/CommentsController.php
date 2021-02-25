@@ -37,6 +37,12 @@ class CommentsController extends Controller
     public function store(Request $request)
     {
         //
+        $arr = $request->input();
+        $comment = new Comment();
+        $table->string("content");
+        $comment->content = $arr['content'];
+        $comment -> save();
+        return redirect()->route('series.comic');
     }
 
     /**

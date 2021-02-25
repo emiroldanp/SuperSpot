@@ -21,5 +21,9 @@
             <th><a href="{{route('comics.index')}}">1</a></th>
         </tbody>
     </table>
+    <table>
+
+    </table>
+    <input type="text"><button type="submit">enviar</button>
 </body>
 </html>

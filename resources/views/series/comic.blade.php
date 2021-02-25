@@ -8,10 +8,7 @@
 </head>
 <body>
     <h1>Comic</h1>
-
-    <table>
-
-    </table>
-    <input type="text"><button type="submit">enviar</button>
+    <h3>Fecha de lanzamiento</h3>
+    <h2>Resumen</h2>
 </body>
 </html>

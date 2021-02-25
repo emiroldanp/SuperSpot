@@ -44,6 +44,22 @@ class DatabaseSeeder extends Seeder
             'editorial' => 'DC Comics',
             'rating' => 4.9,
             
+            
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Drama',
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Comedia',
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Romance',
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Misterio',
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Acción',
         ]);
     }
     

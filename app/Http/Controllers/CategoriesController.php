@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Category;
 
 class CategoriesController extends Controller
 {
@@ -14,6 +16,9 @@ class CategoriesController extends Controller
     public function index()
     {
         //
+        $categories = Category::all();
+        
+        return view('categories.categories', ['categories' => $categories]);
     }
 
     /**
@@ -35,6 +40,12 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         //
+        $arr = $request->input();
+        $id_user = 1;
+        $user = User::find($id_user);
+        $user->categories()->attach($arr['id']);
+        return redirect()->route('user.edit', $user);
+        //return view('user.edit', ['user' => $user]);
     }
 
     /**
@@ -46,6 +57,7 @@ class CategoriesController extends Controller
     public function show($id)
     {
         //
+       
     }
 
     /**
@@ -57,6 +69,8 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         //
+        
+
     }
 
     /**

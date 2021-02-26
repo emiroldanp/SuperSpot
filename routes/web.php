@@ -27,3 +27,6 @@ Route::resource('series', 'App\Http\Controllers\SeriesController');
 
 //Ruta al controlador del Usuario
 Route::resource('user', 'App\Http\Controllers\UsersController');
+
+//Ruta al controlador de las Categorias
+Route::resource('category', 'App\Http\Controllers\CategoriesController');

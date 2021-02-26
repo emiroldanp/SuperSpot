@@ -13,7 +13,7 @@ class CreateCategoriesUsers extends Migration
      */
     public function up()
     {
-        Schema::create('categories_users', function (Blueprint $table) {
+        Schema::create('category_user', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->foreignId('user_id')->references('id')->on('users');
@@ -28,6 +28,6 @@ class CreateCategoriesUsers extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories_users');
+        Schema::dropIfExists('category_user');
     }
 }

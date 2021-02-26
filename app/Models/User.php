@@ -43,6 +43,7 @@ class User extends Authenticatable
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class)->as('category_user')
+        ->withTimestamps();
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Category;
 
 class UsersController extends Controller
 {
@@ -58,6 +59,9 @@ class UsersController extends Controller
     public function show($id)
     {
         //
+        $user =  User::find($id);
+        return view('user.edit', ['user' => $user]);
+       
     }
 
     /**
@@ -68,7 +72,16 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        return view('user.edit', ['user' => $user]);
+        try {
+            //code..
+            $categories = $user -> categories;
+            return view('user.edit', ['user' => $user], ['categories'=>$categories]);
+        } catch (\Throwable $th) {
+            //throw $th;
+            $categories=[];
+            return view('user.edit', ['user' => $user], ['categories' => $categories]);
+        }
+        
     }
 
     /**

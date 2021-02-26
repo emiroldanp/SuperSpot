@@ -27,5 +27,18 @@
 
         <input type = 'submit' value = 'Submit'>
     </form>
+    <table>
+        <thead>
+            <th>Categorias</th>
+            <th><button><a href="{{route('category.index')}}">Agregar</a></button></th>
+        </thead>
+        <tbody>
+            @foreach ($categories as $item)
+                <tr>
+                    <td>{{$item->name}}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </body>
 </html>

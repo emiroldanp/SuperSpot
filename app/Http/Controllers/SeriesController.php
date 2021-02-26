@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Serie;
 use App\Models\Comment;
+use App\Models\User;
 
 class SeriesController extends Controller
 {
@@ -13,12 +14,12 @@ class SeriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
         $series = Serie::all();
         
         
-        return view('index', ['series' => $series]);
+        return view('index', ['series' => $series], ['user' => $user]);
     }
 
     /**

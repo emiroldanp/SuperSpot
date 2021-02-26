@@ -46,7 +46,8 @@ class UsersController extends Controller
         $user->email = $arr['email'];
         $user->password = $arr['password'];
         $user->save();
-        return redirect()->route('user.index');
+        $id_user = $user->id;
+        return redirect()->route('series.index', ['user' => $user]);
     }
 
     /**

@@ -13,6 +13,12 @@
 <nav>
     <button><a href="{{route('user.create')}}">Registar</a></button>
 </nav>
+
+
+<h1>Welcome {{$user}}</h1>
+
+
+
 <body>
     <h1>Series</h1>
     <ul>

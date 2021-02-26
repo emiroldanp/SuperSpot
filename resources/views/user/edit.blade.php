@@ -30,7 +30,7 @@
     <table>
         <thead>
             <th>Categorias</th>
-            <th><button><a href="{{route('category.index')}}">Agregar</a></button></th>
+            <th><button><a href="{{route('category.show', $user->id)}}">Agregar</a></button></th>
         </thead>
         <tbody>
             @foreach ($categories as $item)
@@ -41,6 +41,7 @@
                         <form action="{{route('category.destroy', $item->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
+                            <input type="hidden" name="user_id" value="{{$user->id}}">
                             <button type="submit">Borrar</button>
                         </form>
                     </td>

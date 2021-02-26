@@ -13,12 +13,10 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
         //
-        $categories = Category::all();
-        
-        return view('categories.categories', ['categories' => $categories]);
+       
     }
 
     /**
@@ -41,7 +39,7 @@ class CategoriesController extends Controller
     {
         //
         $arr = $request->input();
-        $id_user = 1;
+        $id_user = $arr['user_id'];
         $user = User::find($id_user);
         $user->categories()->attach($arr['id']);
         return redirect()->route('user.edit', $user);
@@ -57,6 +55,9 @@ class CategoriesController extends Controller
     public function show($id)
     {
         //
+        $user = User::find($id);
+        $categories = Category::all();
+        return view('categories.categories', ['categories' => $categories], ['user' => $user]);
        
     }
 
@@ -91,11 +92,11 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
         //
-        
-        $user = User::find(1);
+        $arr = $request->input();
+        $user = User::find($arr['user_id']);
         $user->categories()->detach($id);
         return redirect()->route('user.edit', $user);
     }

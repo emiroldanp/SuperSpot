@@ -19,7 +19,7 @@
                         <form action="{{route('category.store')}}" method="post">
                             @csrf
                             <input type="hidden" name="id" value="{{$item->id}}">
-                            <input type="hidden" name="user_id" value="1">
+                            <input type="hidden" name="user_id" value="{{$user->id}}">
                             <button type="submit">Agrergar</button>
                         </form>
                     </th>

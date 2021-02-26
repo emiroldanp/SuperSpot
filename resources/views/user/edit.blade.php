@@ -7,9 +7,9 @@
     <title>Edit User</title>
 </head>
 <body>
-<nav>
-    <button><a href="{{route('user.index')}}">Regresar</a></button>
-</nav>
+
+    <a href="{{route('user.index')}}">Regresar</a>
+    
     <h1>Edit User</h1>
 
     <form action="{{route('user.update', ['user' => $user])}}" method = "POST">

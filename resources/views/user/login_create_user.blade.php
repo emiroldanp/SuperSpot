@@ -7,9 +7,8 @@
     <title>User</title>
 </head>
 <body>
-<nav>
-    <button><a href="{{route('user.index')}}">Regresar</a></button>
-</nav>
+<a href="{{route('user.index')}}">Regresar</a>
+
     <h1>User</h1>
 
     <form action="{{route('user.store')}}" method = "POST">

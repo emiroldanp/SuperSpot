@@ -94,5 +94,9 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         //
+        
+        $user = User::find(1);
+        $user->categories()->detach($id);
+        return redirect()->route('user.edit', $user);
     }
 }

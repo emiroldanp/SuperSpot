@@ -36,7 +36,16 @@
             @foreach ($categories as $item)
                 <tr>
                     <td>{{$item->name}}</td>
+                    <td>
+                        
+                        <form action="{{route('category.destroy', $item->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Borrar</button>
+                        </form>
+                    </td>
                 </tr>
+               
             @endforeach
         </tbody>
     </table>

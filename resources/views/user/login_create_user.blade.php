@@ -7,6 +7,9 @@
     <title>User</title>
 </head>
 <body>
+<nav>
+    <button><a href="{{route('series.index')}}">Volver al inicio</a></button>
+</nav>
     <h1>User</h1>
 
     <form action="{{route('user.store')}}" method = "POST">

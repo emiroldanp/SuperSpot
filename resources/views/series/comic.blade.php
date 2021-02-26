@@ -7,6 +7,9 @@
     <title>Comic</title>
 </head>
 <body>
+
+    <a href="{{route('series.index')}}">Atras</a>
+
     <h1>Comic</h1>
     <h3>Fecha de lanzamiento</h3>
     <h2>Resumen</h2>

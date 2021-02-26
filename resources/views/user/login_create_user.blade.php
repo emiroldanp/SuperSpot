@@ -8,7 +8,7 @@
 </head>
 <body>
 <nav>
-    <button><a href="{{route('series.index')}}">Volver al inicio</a></button>
+    <button><a href="{{route('user.index')}}">Regresar</a></button>
 </nav>
     <h1>User</h1>
 

@@ -7,6 +7,7 @@
     <title>Categories</title>
 </head>
 <body>
+    <a href="{{route('series.show', $user->id)}}">Atras</a>
     <table>
         <thead>
             <th>Categorias</th>

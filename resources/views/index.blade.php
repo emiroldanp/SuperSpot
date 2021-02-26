@@ -11,7 +11,7 @@
     <title>Index</title>
 </head>
 <nav>
-    <button><a href="{{route('user.create')}}">Registar</a></button>
+    <button><a href="{{route('user.index')}}">Menú de usuarios</a></button>
 </nav>
 
 

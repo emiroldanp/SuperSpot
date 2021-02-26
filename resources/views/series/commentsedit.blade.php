@@ -1,4 +1,6 @@
 
+<a href="{{route('series.show', $comment -> serie_id)}}">Atras</a>
+
 <h1>Edita tu comentario</h1>
 
 <form action="{{route('comments.update', $comment -> id)}}" method = "POST">

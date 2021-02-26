@@ -7,6 +7,9 @@
     <title>User</title>
 </head>
 <body>
+<nav>
+    <button><a href="{{route('series.index')}}">Volver al inicio</a></button>
+</nav>
     <h1>List of Users</h1>
     <p>
         <a href="{{ route('user.create') }} ">Create a User </a>

@@ -26,4 +26,19 @@ Route::resource('comics', 'App\Http\Controllers\ComicsController');
 Route::resource('series', 'App\Http\Controllers\SeriesController');
 
 //Ruta al controlador del Usuario
+<<<<<<< Updated upstream
 Route::resource('user', 'App\Http\Controllers\UsersController');
+=======
+Route::resource('user', 'App\Http\Controllers\UsersController');
+
+//Ruta al controlador de las Categorias
+Route::resource('category', 'App\Http\Controllers\CategoriesController');
+
+Route::get('register', 'App\Http\Controllers\AuthController@register')->name('auth.register');
+Route::post('register', 'App\Http\Controllers\AuthController@doRegister')->name('auth.do-register');
+
+Route::get('login', 'App\Http\Controllers\AuthController@login')->name('auth.login');
+Route::post('login', 'App\Http\Controllers\AuthController@doLogin')->name('auth.do-login');
+
+Route::any('logout', 'App\Http\Controllers\AuthController@logout')->name('auth.logout');
+>>>>>>> Stashed changes

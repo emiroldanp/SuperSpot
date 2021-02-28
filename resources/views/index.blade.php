@@ -11,7 +11,16 @@
     <title>Index</title>
 </head>
 <nav>
+<<<<<<< Updated upstream
     <button><a href="{{route('user.create')}}">Registar</a></button>
+=======
+    @auth
+        {{ auth()->user()->email }}
+        <a href="{{route('auth.logout')}}">Logout</a>
+    @endauth
+    <button><a href="{{route('auth.login')}}">Login</a></button>
+    <button><a href="{{route('auth.register')}}">Registro</a></button>
+>>>>>>> Stashed changes
 </nav>
 
 

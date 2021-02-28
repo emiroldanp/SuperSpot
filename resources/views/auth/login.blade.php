@@ -8,16 +8,7 @@
     <title>Login</title>
 </head>
 <body>
-<<<<<<< Updated upstream:resources/views/user/login_create_user.blade.php
-<nav>
-    <button><a href="{{route('series.index')}}">Volver al inicio</a></button>
-</nav>
-    <h1>User</h1>
-
-    <form action="{{route('user.store')}}" method = "POST">
-=======
     <form action="{{route('auth.do-login')}}" method="POST">
->>>>>>> Stashed changes:resources/views/auth/login.blade.php
         @csrf
         <h1>Login</h1>
         <div>

@@ -11,11 +11,25 @@
     <title>Index</title>
 </head>
 <nav>
-    <button><a href="{{route('user.index')}}">Menú de usuarios</a></button>
+    @if (Auth::check())
+        @auth
+            <h4>
+                <a href="{{route('auth.show')}}">{{ auth()->user()->name}}</a>
+                <button><a href="{{route('auth.logout')}}">Logout</a></button>
+            </h4>
+            
+        @endauth    
+    @else
+        <button><a href="{{route('auth.login')}}">Login</a></button>
+        <button><a href="{{route('auth.register')}}">Registro</a></button>
+
+    @endif
+   
+    
 </nav>
 
 
-<h1>Welcome {{$user}}</h1>
+<h1>ComicWire</h1>
 
 
 

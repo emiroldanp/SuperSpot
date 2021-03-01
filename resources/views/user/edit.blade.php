@@ -8,27 +8,39 @@
 </head>
 <body>
 
-    <a href="{{route('user.index')}}">Regresar</a>
+    <a href="{{route('series.index')}}">Regresar</a>
     
     <h1>Edit User</h1>
 
-    <form action="{{route('user.update', ['user' => $user])}}" method = "POST">
+    <form action="{{route('auth.update-user', ['user' => $user])}}" method = "POST">
         @csrf
         @method('PUT')
         <div>
-            <label for="">Name</label>
+            <label for="">Nombre</label>
             <input type="text" name='name' value="{{$user->name}}">
         </div>
         <div>
-            <label for="">Email</label>
+            <label for="">Correo</label>
             <input type="text" name='email' value="{{$user->email}}">
         </div>
+        <button type="submit">Submit</button>
+    </form>
+    
+    <form action="{{route('auth.update-password')}}" method="post">
+        @csrf
+        @method('PUT')
         <div>
-            <label for="">Password</label>
-            <input type="text" name='password' value="{{$user->password}}">
+            <input type="hidden" name="email" value = "{{$user->email}}">
+            <h3>Cambiar Contraseña</h3>
+            <label for="">Contraseña Actual</label>
+            <input type="password" name='password' value="">
+            <br>
+            <label for="">Nueva Contraseña</label>
+            <input type="password" name='password_new' value="">
+            
         </div>
 
-        <input type = 'submit' value = 'Submit'>
+        <button type="submit">Submit</button>
     </form>
     <table>
         <thead>

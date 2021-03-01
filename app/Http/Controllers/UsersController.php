@@ -71,8 +71,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit()
     {
+
         try {
             //code..
             $categories = $user -> categories;
@@ -99,7 +100,7 @@ class UsersController extends Controller
         $user->email = $arr['email'];
         $user->password = $arr['password'];
         $user->save();
-        return redirect()->route('user.index');
+        return redirect()->route('auth.show');
     }
 
     /**

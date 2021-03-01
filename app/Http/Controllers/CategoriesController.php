@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 
 class CategoriesController extends Controller
 {
@@ -39,10 +40,9 @@ class CategoriesController extends Controller
     {
         //
         $arr = $request->input();
-        $id_user = $arr['user_id'];
-        $user = User::find($id_user);
+        $user = Auth::user();
         $user->categories()->attach($arr['id']);
-        return redirect()->route('user.edit', $user);
+        return redirect()->route('auth.show', $user);
         //return view('user.edit', ['user' => $user]);
     }
 
@@ -96,8 +96,8 @@ class CategoriesController extends Controller
     {
         //
         $arr = $request->input();
-        $user = User::find($arr['user_id']);
+        $user = Auth::user();
         $user->categories()->detach($id);
-        return redirect()->route('user.edit', $user);
+        return redirect()->route('auth.show', $user);
     }
 }

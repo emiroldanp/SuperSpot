@@ -41,3 +41,5 @@ Route::post('login', 'App\Http\Controllers\AuthController@doLogin')->name('auth.
 Route::any('logout', 'App\Http\Controllers\AuthController@logout')->name('auth.logout');
 
 Route::get('show', 'App\Http\Controllers\AuthController@show')->name('auth.show');
+Route::any('updateUser', 'App\Http\Controllers\AuthController@updateUser')->name('auth.update-user');
+Route::any('updatePassword', 'App\Http\Controllers\AuthController@updatePassword')->name('auth.update-password');

@@ -27,7 +27,7 @@ class AuthController extends Controller
         $data['password'] = Hash::make($data['password']);
     
         User::create($data);
-        return redirect()->back();
+        return redirect()->route('auth.login');
     }
 
     public function login(Request $req){
@@ -48,5 +48,45 @@ class AuthController extends Controller
         $req->session()->regenerateToken();
         return redirect()->back();
     }
+
+    public function show(){
+        $user = Auth::user();
+        try {
+            //code..
+            $categories = $user -> categories;
+            return view('user.edit', ['user' => $user], ['categories'=>$categories]);
+        } catch (\Throwable $th) {
+            //throw $th;
+            $categories=[];
+            return view('user.edit', ['user' => $user], ['categories' => $categories]);
+        }
+    }
+    public function updateUser(Request $request){
+        
+        $user = Auth::user();
+        $arr = $request->input();
+        $user->name = $arr['name'];
+        $user->email = $arr['email'];
+        Validator::make($request->all(), [
+            'email' => 'required|email:rfc,dns',
+        ])->validate();
+
+        $user->save();
+        return redirect()->route('auth.show');
+    }
+    public function updatePassword(Request $request)
+    {
+        $user = Auth::user();
+        $credentials = $request->only('email', 'password');
+        $arr = $request->input();
+        if(Auth::attempt($credentials)){
+            $user->password =  Hash::make($arr['password_new']);
+            $user->save();
+            return redirect()->route('auth.show');
+        }
+      
+        return redirect()->route('auth.show');
+    }
+
         
 }

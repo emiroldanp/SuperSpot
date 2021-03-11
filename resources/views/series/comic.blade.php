@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Comic</title>
 </head>
+
+@include('includes.navbar')
+
 <body>
 
     <a href="{{route('series.index')}}">Atras</a>
@@ -23,6 +26,7 @@
             <label for="">Apoya a otros con un comentario</label>
             <input type="text" name='content'>
             <input type="hidden" name='id_serie'>
+            
         </div>
 
         <input type = 'submit' value = 'Submit'>

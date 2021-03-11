@@ -46,4 +46,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Category::class)->as('category_user')
         ->withTimestamps();
     }
+    
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

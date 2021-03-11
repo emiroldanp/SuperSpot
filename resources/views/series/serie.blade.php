@@ -7,8 +7,10 @@
     <title>Serie</title>
 </head>
 
+@include('includes.navbar')
+
 <body>
-    <a href="{{route('series.index')}}">Atras</a>
+    <a name="" id="" class="btn" href="{{route('series.index')}}" role="button">Atrás</a>
     <h1>{{$serie->name}}</h1>
     <table>
         <thead>

@@ -17,8 +17,6 @@
 
 <h1>ComicWire</h1>
 
-
-
 <body>
     <h1>Series</h1>
     <ul>

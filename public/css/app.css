@@ -10009,9 +10009,29 @@ h3 {
 }
 
 .navbar-brand {
-  color: #B9BEBA;
+  color: #4d8ab5;
+}
+
+.nav-item {
+  margin-right: 10px;
 }
 
 .btn-primary {
+  background-color: #42547e;
+  color: white;
+  border-color: #42547e;
+}
+
+.btn-primary:hover {
   background-color: #1e2639;
+  border-color: #1e2639;
+}
+
+a:link {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: #B9BEBA;
 }

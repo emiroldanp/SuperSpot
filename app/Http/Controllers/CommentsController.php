@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Serie;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class CommentsController extends Controller
 {
@@ -43,6 +45,7 @@ class CommentsController extends Controller
         $comment->content = $arr['content'];
         $id_serie = $arr['id_serie'];
         $serie = Serie::find($id_serie)->comments()->save($comment);
+        $user = User::find(Auth::user())->comments()->save($comment);
         return redirect()->route('series.show', $id_serie);
 
 

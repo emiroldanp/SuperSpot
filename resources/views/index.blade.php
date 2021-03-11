@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-
+@extends('layout.main')
 
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
    
@@ -11,21 +11,7 @@
     <title>Index</title>
 </head>
 <nav>
-    @if (Auth::check())
-        @auth
-            <h4>
-                <a href="{{route('auth.show')}}">{{ auth()->user()->name}}</a>
-                <button><a href="{{route('auth.logout')}}">Logout</a></button>
-            </h4>
-            
-        @endauth    
-    @else
-        <button><a href="{{route('auth.login')}}">Login</a></button>
-        <button><a href="{{route('auth.register')}}">Registro</a></button>
-
-    @endif
-   
-    
+   @include('includes.navbar') 
 </nav>
 
 

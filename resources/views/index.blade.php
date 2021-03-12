@@ -16,16 +16,14 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 </head>
-<nav>
-   @include('includes.navbar')
-</nav>
-
-
 
 
 <body>
+    <nav>
+        @include('includes.navbar')
+     </nav>
+
     <div class="jumbotron">
-        <h1>ComicWire</h1>
         <h1>Series</h1>
 
     </div>
@@ -79,6 +77,9 @@
             </div>
     </div>
 
+    <footer>
+        @include('includes.footer')
+    </footer>
 </body>
 
 </html>

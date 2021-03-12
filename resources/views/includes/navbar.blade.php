@@ -1,9 +1,12 @@
 <link rel="stylesheet" href="{{ asset('/css/app.css')}}">
+<link rel="stylesheet" href="{{ asset('/css/navbar.css')}}">
 <script src="/js/app.js"></script>
 
 <div>
     <nav class="navbar sticky-top navbar-expand-sm">
-        <a class="navbar-brand" href="{{route('series.index')}}">Comicwire</a>
+        <div class = "justify-content-center">
+            <a class="navbar-brand" href="{{route('series.index')}}">Comicwire</a>
+        </div>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -12,9 +15,9 @@
                 @if (Auth::check())
                 @auth
                     <h4>
-                        <ul class="navbar-nav ml-auto">
-                            <a href="{{route('auth.show')}}">{{ auth()->user()->name}}</a>
-                        </ul>
+                        
+                        <a  class="btn btn-secundary" href="{{route('auth.show')}}"  role="button">{{ auth()->user()->name}}</a>
+                        
                         <a name="" id="" class="btn btn-primary" href="{{route('auth.logout')}}" role="button">Salir</a>                        
                     </h4>
                     

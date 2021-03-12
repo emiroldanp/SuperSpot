@@ -26,7 +26,7 @@
     <h4>Comentarios</h4>
     <table>
         <thead>
-            
+
         </thead>
         <tbody>
             @foreach ($comments as $comment)
@@ -40,7 +40,7 @@
                         <button type="submit">Borrar</button>
                     </form>
                 </th>
-               
+
             </tr>
             @endforeach
         </tbody>

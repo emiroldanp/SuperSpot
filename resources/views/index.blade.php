@@ -3,23 +3,33 @@
 @extends('layout.main')
 
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-   
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Index</title>
+
+    <link rel="stylesheet" href="{{ asset('/css/app.css')}}">
+    <link rel="stylesheet" href="{{ asset('/css/index.css')}}">
+    <script src="/js/app.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 </head>
 <nav>
-   @include('includes.navbar') 
+   @include('includes.navbar')
 </nav>
 
 
-<h1>ComicWire</h1>
+
 
 <body>
-    <h1>Series</h1>
-    <ul>
+    <div class="jumbotron">
+        <h1>ComicWire</h1>
+        <h1>Series</h1>
+
+    </div>
+    {{-- <ul>
     <table>
         <thead>
             <tr>
@@ -36,16 +46,39 @@
                 <tr>
                     <td><a href="{{route('series.show', $item->id)}}">{{$item->name}}</a></td>
                     <td>{{$item->rating}}</td>
-                    
+
                 </tr>
             @endforeach
         </tbody>
-        
     </table>
+    </ul> --}}
 
-    </ul>
+
+
+
+
+    <div class="container">
+            <div class="row mt-5" style="margin: 0 auto">
+                @foreach($series as $item)
+                <div class="col-md-3 mb-3 d-flex justify-content-center">
+                    <div class="card-deck">
+                            <div class="card" style="width: 12rem;">
+                                <img class="card-img-top" src="https://source.unsplash.com/random" alt="Card image cap">
+                                <div class="card-body">
+                                    <a class="card-title" href="{{route('series.show', $item->id)}}">{{$item->name}}</a>
+                                    <p class="card-text">Description</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Rating: {{$item->rating}}</small>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+                @endforeach
+            </div>
+    </div>
 
 </body>
-
 
 </html>

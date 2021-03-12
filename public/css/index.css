@@ -1,0 +1,6 @@
+body > div.container > div > div:nth-child(n) > div > div > div.card-body > a {
+    text-decoration: none;
+    color: #3490dc;
+    font-size: 1.25rem;
+}
+

@@ -65,7 +65,7 @@
                             <div class="card" style="width: 12rem;">
                                 <img class="card-img-top" src="https://source.unsplash.com/random" alt="Card image cap">
                                 <div class="card-body">
-                                    <a class="card-title" href="{{route('series.show', $item->id)}}">{{$item->name}}</a>
+                                    <a class="card-title nombre-comic" href="{{route('series.show', $item->id)}}">{{$item->name}}</a>
                                     <p class="card-text">Description</p>
                                 </div>
                                 <div class="card-footer">

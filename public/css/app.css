@@ -10035,9 +10035,3 @@ a:link {
 a:hover {
   color: #B9BEBA;
 }
-
-.card a {
-  text-decoration: none;
-  color: black;
-  font-size: 1.25rem;
-}

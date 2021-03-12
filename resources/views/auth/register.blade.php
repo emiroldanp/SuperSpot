@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
 </head>
-<body class = "registro-image">
+<body class = "image">
     
     <div class = "container">
         <form action="{{route('auth.do-register')}}" method="POST">

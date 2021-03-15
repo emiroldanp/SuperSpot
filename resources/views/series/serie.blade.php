@@ -3,12 +3,12 @@
 
 
 
-@include('includes.navbar')
-
+    @extends('layouts.main')
+    @include('includes.navbar')
 
 
 <body>
-    <div class="container">
+    <div class="container-md">
         <br>
         <div class="row">
             <a name="" class="btn btn-outline-secondary btn-sm" href="{{route('series.index')}}" role="button">Atrás</a> 
@@ -44,7 +44,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <th><a href="{{route('comics.index')}}">1</a></th>
+                        <th>1</th>
                     </tbody>
                 </table>
             </div>
@@ -111,16 +111,15 @@
                 @endif
             </div>
         </div>
+        <br>
         
-        
+    
+
     </div>
-    
-    
-    
-    
-   
-    
     @include('includes.footer')
+    
+    
+
 </body>
 
 

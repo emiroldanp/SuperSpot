@@ -1,12 +1,11 @@
 
-<link rel="stylesheet" href="{{ asset('/css/app.css')}}">
-<link rel="stylesheet" href="{{ asset('/css/footer.css')}}">
+
+
 <!-- Footer -->
-<footer class="bg-light text-center text-lg-start sticky-bottom">
-    <!-- Grid container -->
-    <div class="container p-4">
-     
-    </div>
+<div class = "sticky-bottom">
+
+  <footer class="bg-light text-center text-lg-start ">
+
     <!-- Grid container -->
   
     <!-- Copyright -->
@@ -17,3 +16,4 @@
     <!-- Copyright -->
   </footer>
   <!-- Footer -->
+</div>

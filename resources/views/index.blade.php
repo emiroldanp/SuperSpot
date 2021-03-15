@@ -23,7 +23,7 @@
         @include('includes.navbar')
      </nav>
 
-    <div class="jumbotron">
+    <div class="jumbotron" style="max-height: 100px">
         <h1>Series</h1>
 
     </div>
@@ -36,10 +36,7 @@
                                 <img class="card-img-top" src="https://source.unsplash.com/random" alt="Card image cap">
                                 <div class="card-body">
                                     <a class="card-title nombre-comic" href="{{route('series.show', $item->id)}}">{{$item->name}}</a>
-                                    <p class="card-text">Description</p>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-muted">Rating: {{$item->rating}}</small>
+                                    <p class="card-text"> <small class="text-muted">Rating: {{$item->rating}}</small></p>
                                 </div>
                             </div>
 

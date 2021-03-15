@@ -80,7 +80,9 @@
                                         <div class="col" id ="{{$comment->id}}" style="display:block;">
                                             {{$comment->content}}
                                         </div>  
-                                        <form action="{{route('comments.update', $comment -> id)}}" method = "POST">
+                                        
+                                    </div>   
+                                    <form action="{{route('comments.update', $comment -> id)}}" method = "POST">
                                                 @csrf
                                                 @method('PUT')
                                                 
@@ -89,8 +91,7 @@
                                                 </div>  
 
                                                 <button  id="{{$comment->id}}4" class="btn btn-link"   type="submit" style="display:none;"></button>
-                                        </form>
-                                    </div>    
+                                    </form> 
                                 </td>
                             </tr>
                             @endforeach

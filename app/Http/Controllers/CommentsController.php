@@ -43,9 +43,12 @@ class CommentsController extends Controller
         $arr = $request->input();
         $comment = new Comment();
         $comment->content = $arr['content'];
+        $comment->user()->associate(Auth::user());
+    
         $id_serie = $arr['id_serie'];
         $serie = Serie::find($id_serie)->comments()->save($comment);
-        $user = User::find(Auth::user())->comments()->save($comment);
+
+       
         return redirect()->route('series.show', $id_serie);
 
 

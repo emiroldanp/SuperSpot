@@ -10,50 +10,96 @@
 @include('includes.navbar')
 
 <body>
-    <a name="" id="" class="btn" href="{{route('series.index')}}" role="button">Atrás</a>
-    <h1>{{$serie->name}}</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Volumen</th>
-                <th>Fecha</th>
-            </tr>
-        </thead>
-        <tbody>
-            <th><a href="{{route('comics.index')}}">1</a></th>
-        </tbody>
-    </table>
-    <h4>Comentarios</h4>
-    <table>
-        <thead>
-
-        </thead>
-        <tbody>
-            @foreach ($comments as $comment)
-            <tr>
-                <th>{{$comment->content}}</th>
-                <td><a href="{{route('comments.edit', $comment->id)}}">Editar</a></td>
-                <th>
-                    <form action="{{route('comments.destroy', $comment->id)}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Borrar</button>
-                    </form>
-                </th>
-
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-    <form action="{{route('comments.store')}}" method = "POST">
-        @csrf
-        <div>
-            <label for="">Apoya a otros con un comentario</label>
-            <input type="text" name='content'>
-            <input type="hidden" name='id_serie' value= {{$serie->id}}>
+    <div class="container">
+        <div class="row">
+            <a name="" id="" class="btn" href="{{route('series.index')}}" role="button">Atrás</a> 
         </div>
-
-        <input type = 'submit' value = 'Submit'>
-    </form>
+        <div class="row">
+            <h1>{{$serie->name}}</h1>
+        </div>
+        <div class = "row">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Volumen</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <th><a href="{{route('comics.index')}}">1</a></th>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <div class="row h-100">
+                <h4>Comentarios</h4>
+            </div>
+            <div class="row">
+                <table class="table" width>
+                    <tbody>
+                        @foreach ($comments as $comment)
+                        <tr>
+                            <td>    
+                                <div class="row">
+                                    <div class="col">
+                                        {{$comment->user->name}}
+                                    </div>
+                                    @if (Auth::user() == $comment->user)
+                            
+                                    <div class="col-xs-1-12">
+                                        <form action="{{route('comments.edit', $comment->id)}}">
+                                            <button  class="btn btn-link"   type="submit">Editar</button>
+                                        </form>
+                                    </div>
+                                    <div class="col-xs-1-12">
+                                        <form action="{{route('comments.destroy', $comment->id)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button  class="btn btn-link" type="submit">Borrar</button>
+                                        </form>
+                                    </div>
+                                
+                                @endif
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        {{$comment->content}}
+                                    </div>
+                                </div>    
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            @if (Auth::check())
+            <form action="{{route('comments.store')}}" method = "POST">
+                @csrf
+                <div>
+                    <div class="row">
+                        <div class="col">
+                            <input class = "form-control" type="text" name='content' placeholder="Apoya a otros con un comentario">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <input type="hidden" name='id_serie' value= {{$serie->id}}>
+                        <input class = "btn btn-primary" type = 'submit' value = 'Submit'>
+                        </div>  
+                    </div>
+                </div>
+            </form>
+        @endif
+        </div>
+        
+    </div>
+    
+    
+    
+    
+   
+    
+    @include('includes.footer')
 </body>
 </html>

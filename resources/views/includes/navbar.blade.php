@@ -1,7 +1,5 @@
-<link rel="stylesheet" href="{{ asset('/css/app.css')}}">
-<link rel="stylesheet" href="{{ asset('/css/navbar.css')}}">
-<script src="/js/app.js"></script>
 
+@include('layouts.main')
 <div>
     <nav class="navbar sticky-top navbar-expand-sm">
         <div class = "justify-content-center">

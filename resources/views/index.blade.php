@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-@extends('layout.main')
+@extends('layouts.main')
 
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -27,34 +27,6 @@
         <h1>Series</h1>
 
     </div>
-    {{-- <ul>
-    <table>
-        <thead>
-            <tr>
-                <th>
-                    Nombre
-                </th>
-                <th>
-                    Rating
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($series as $item)
-                <tr>
-                    <td><a href="{{route('series.show', $item->id)}}">{{$item->name}}</a></td>
-                    <td>{{$item->rating}}</td>
-
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-    </ul> --}}
-
-
-
-
-
     <div class="container">
             <div class="row mt-5" style="margin: 0 auto">
                 @foreach($series as $item)

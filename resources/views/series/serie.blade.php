@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@extends('layouts.main')
-@include('includes.navbar')
+    @extends('layouts.main')
+    @include('includes.navbar')
+
 
 <body>
-    <div class="container">
+    <div class="container-md">
         <br>
         <div class="row">
             <a name="" class="btn btn-outline-secondary btn-sm" href="{{route('series.index')}}" role="button">Atrás</a> 
@@ -117,6 +118,7 @@
                 @endif
             </div>
         </div>
+        <br>
         
         
     </div>
@@ -124,7 +126,7 @@
     
 </head>
     
-    @include('includes.footer')
+
 </body>
 
 <script>

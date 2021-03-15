@@ -1,9 +1,14 @@
 
-@include('layouts.main')
+<style>
+    @font-face {
+        font-family: "Shaka Pow";
+        src: url('/fonts/Shaka Pow.ttf');
+    }
+</style>
 <div>
     <nav class="navbar sticky-top navbar-expand-sm">
         <div class = "justify-content-center">
-            <a class="navbar-brand" href="{{route('series.index')}}">Comicwire</a>
+            <a class="navbar-brand" href="{{route('series.index')}}" style="font-family: Shaka Pow">Comicwire</a>
         </div>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
             aria-expanded="false" aria-label="Toggle navigation">

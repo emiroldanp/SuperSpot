@@ -30,7 +30,7 @@
     <div class="container">
             <div class="row mt-5" style="margin: 0 auto">
                 @foreach($series as $item)
-                <div class="col-md-3 mb-3 d-flex justify-content-center">
+                <div class="col-md-4 col-lg-3 mb-3 d-flex justify-content-center">
                     <div class="card-deck">
                             <div class="card" style="width: 12rem;">
                                 <img class="card-img-top" src="https://source.unsplash.com/random" alt="Card image cap">

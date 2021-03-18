@@ -98,6 +98,6 @@ class CategoriesController extends Controller
         $arr = $request->input();
         $user = Auth::user();
         $user->categories()->detach($id);
-        return redirect()->route('auth.showx', $user);
+        return redirect()->route('auth.show', $user);
     }
 }

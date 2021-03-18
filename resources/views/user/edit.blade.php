@@ -24,14 +24,17 @@
         <form action="{{route('auth.update-user', ['user' => $user])}}" method = "POST">
             @csrf
             @method('PUT')
-            <div>
-                <label for="">Nombre</label>
-                <input type="text" name='name' value="{{$user->name}}">
-            </div>
-            <div>
-                <label for="">Correo</label>
-                <input type="text" name='email' value="{{$user->email}}">
-            </div>
+                
+                <div class="form-group">
+                    <label for="">Nombre</label>
+                    <input type="text" class="form-control"  name='name' value="{{$user->name}}"> 
+                </div>
+                <div class="form-group">
+                    <label for="">Correo</label>
+                    <input class="form-control"  type="email" name='email' value="{{$user->email}}">
+                </div>
+           
+            
             <br>
             <button type="submit" class="btn btn-outline-secondary btn-sm">Submit</button>
         </form>
@@ -44,10 +47,10 @@
                 <h3>Cambiar Contraseña</h3>
                 
                 <label for="">Contraseña Actual</label>
-                <input type="password" name='password' value="">
+                <input class="form-control" type="password" name='password' value="">
                 <br>
                 <label for="">Nueva Contraseña</label>
-                <input type="password" name='password_new' value="">
+                <input class="form-control" type="password" name='password_new' value="">
                 
             </div>
             <br>

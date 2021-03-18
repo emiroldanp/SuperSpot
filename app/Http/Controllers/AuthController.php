@@ -46,20 +46,26 @@ class AuthController extends Controller
         Auth::logout();
         $req->session()->invalidate();
         $req->session()->regenerateToken();
-        return redirect()->back();
+        return redirect()->route('series.index');
     }
 
     public function show(){
-        $user = Auth::user();
-        try {
-            //code..
-            $categories = $user -> categories;
-            return view('user.edit', ['user' => $user], ['categories'=>$categories]);
-        } catch (\Throwable $th) {
-            //throw $th;
-            $categories=[];
-            return view('user.edit', ['user' => $user], ['categories' => $categories]);
+
+        try{
+            $user = Auth::user();
+            try {
+                //code..
+                $categories = $user -> categories;
+                return view('user.edit', ['user' => $user], ['categories'=>$categories]);
+            } catch (\Throwable $th) {
+                //throw $th;
+                $categories=[];
+                return view('user.edit', ['user' => $user], ['categories' => $categories]);
+            }
+        }catch (\Throwable $t){
+            redirect()->route('series.index');
         }
+       
     }
     public function updateUser(Request $request){
         

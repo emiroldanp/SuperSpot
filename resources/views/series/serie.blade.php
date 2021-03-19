@@ -33,7 +33,7 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-4">
+            <div class="col-6">
                 <table class="table">
                     <thead>
                         <tr>

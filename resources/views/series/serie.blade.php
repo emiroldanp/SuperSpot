@@ -4,7 +4,6 @@
     @extends('layouts.main')
     @include('includes.navbar')
 
-
 <body>
     <div class="container-md">
         <br>
@@ -74,10 +73,24 @@
                                                 <button  class="btn btn-link" type="submit">Borrar</button>
                                             </form>
                                         </div>
+                                        @else
+                                        <div class="col-xs-1-12" style="margin-right:7px;">
+                                            <form action="#" method="POST">
+                                                <i onclick="#" class="fa fa-thumbs-up"></i>
+                                            </form>
+                                            <p id="like"></p>
+                                        </div>
+                                        <div class="col-xs-1-12">
+                                            <form action="#" method="POST">
+                                                <i onclick="#" class="fa fa-thumbs-down"></i>
+                                            </form>
+                                        </div>
+                                        
                                     @endif
                                     </div>
                                     <div class="row">
-                                        <div class="col" id ="{{$comment->id}}" style="display:block;">
+                                        <div class="col" id ="{{$comment->id}}6" style="display:block;">
+                                            
                                             {{$comment->content}}
                                         </div>  
                                         
@@ -130,6 +143,7 @@
 
 </body>
 
+<script src='../js/app.js'></script>
 <script>
     function showDiv(id_comment, id_el1, id_el2, id_el3) {
         document.getElementById(id_comment).style.display = "none";
@@ -141,6 +155,17 @@
     function sendUpdate(id_el4) {
         document.getElementById(id_el4).click();
     }
+
+    function likeDislike(x) {
+        x.classList.toggle("fa-thumbs-down");
+    }
+    window.Echo.channel('commentsChannel').listen('CommentsEvent', (e) => {
+        console.log(e);
+        var n = e.comment.toString();
+        var res = n.concat('6');
+        document.getElementById(res).innerHTML = "like al comment " + e.comment;
+        }); 
 </script>
+
 
 </html>

@@ -3980,7 +3980,6 @@ input[type=button].btn-block {
   font-size: 1.125rem;
   line-height: inherit;
   white-space: nowrap;
- 
 }
 .navbar-brand:hover, .navbar-brand:focus {
   text-decoration: none;
@@ -10005,20 +10004,8 @@ h3 {
     border-color: #dee2e6;
   }
 }
-.navbar {
-  background-color: #C72523 !important;
-}
-
-.navbar-brand {
-  color: #4d8ab5;
-}
-
-.nav-item {
-  margin-right: 10px;
-}
-
 .btn-primary {
-  background-color: #42547e;
+  background-color: white;
   color: white;
   border-color: #42547e;
 }

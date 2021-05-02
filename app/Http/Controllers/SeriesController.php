@@ -67,14 +67,11 @@ class SeriesController extends Controller
         $response = Http::get('https://gateway.marvel.com:443/v1/public/comics/'. $id .'?&ts='. $current_date_time . '&apikey=abae7768139eb68365c998fc37636a75&hash='. $hash)['data'];
         //dd($response);
         
-        try {
-            $comments = Comment::where("id_comic","=", $id)->get();
-           
-            return view('series.comic', ['comments'=>$comments])->with("serie",$response["results"][0]);
-        } catch (\Throwable $th) {
-            
-            return view('series.comic')->with("serie", $response["results"][0]);
-        }
+     
+        $comments = Comment::where("id_comic","=", $id)->get();
+        
+        return view('series.comic', ['comments'=>$comments])->with("serie",$response["results"][0]);
+        
        
     }
        

@@ -29,12 +29,13 @@
            
                 <div class="carousel-item">
                     <a href="{{$item["url"]}}">
-                    <img class="d-block w-100" src={{$item["urlToImage"]}} alt="Second slide">
+                     <img class="d-block w-100" src={{$item["urlToImage"]}} alt="Second slide">
+                    </a>
                     <div class="carousel-caption d-none d-md-block">
                         <h5>{{$item["title"]}}</h5>
                         <p>{{$item["description"]}}</p>
-                      </div>
-                    </a>
+                    </div>
+                   
                 </div>
            
             @endforeach

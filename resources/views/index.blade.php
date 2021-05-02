@@ -15,16 +15,42 @@
     <script src="/js/app.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 
 <body>
-    <nav class="mb-5">
+   
         @include('includes.navbar')
-     </nav>
 
-    <div class="jumbotron" style="max-height: 100px">
-        <h1>Series</h1>
+     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" style=" width:100%;">
+            @foreach ($news as $item)
+           
+                <div class="carousel-item">
+                    <a href="{{$item["url"]}}">
+                    <img class="d-block w-100" src={{$item["urlToImage"]}} alt="Second slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>{{$item["title"]}}</h5>
+                        <p>{{$item["description"]}}</p>
+                      </div>
+                    </a>
+                </div>
+           
+            @endforeach
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+    <div class="jumbotron" style="max-height: 50px">
+        <h1>Comics</h1>
 
     </div>
     <div class="container">
@@ -52,6 +78,10 @@
         @include('includes.footer')
     </footer>
 </body>
-
+<script>
+    $(document).ready(function () {
+        $('#carouselExampleControls').find('.carousel-item').first().addClass('active');
+    });
+</script>
 
 </html>

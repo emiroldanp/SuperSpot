@@ -78,28 +78,37 @@
                                             {{$comment->user->name}}
                                         </div>
                                         @if (Auth::user() == $comment->user)
+                                        <div class="col-xs-1-12">
+                                            <div class="row flex-row-reverse">
+                                                <div class="col-xs-1-12">
+                                                    <i class="fa fa-thumbs-down"></i>
+                                                    <p id = "dislikes">{{$comment->dislikes}}</p>
+                                                </div>
+                                                <div class="col-xs-1-12" style="margin-right:7px;">
+                                                    <i class="fa fa-thumbs-up"></i>
+                                                    <p id = "likes">{{$comment->likes}}</p>
+                                                </div>
+                                                
+                                            </div>
+                                           
+                                        </div>
                                         
-                                        <div class="col-xs-1-12">
-                                            <button  id="{{$comment->id}}1" class="btn btn-link"   type="submit" style="display:block;" onclick="showDiv({{$comment->id}}, {{$comment->id}}1, {{$comment->id}}2, {{$comment->id}}3)" >Editar</button>
-                                            <button  id="{{$comment->id}}2" class="btn btn-link"   type="submit" style="display:none;"  onclick="sendUpdate({{$comment->id}}4)">Terminar</button>
-                                        </div>
-                                        <div class="col-xs-1-12">
-                                            <form action="{{route('comments.destroy', $comment->id)}}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button  class="btn btn-link" type="submit" onclick = "deleteComic({{$comment->id}}, this)">Borrar</button>
-                                            </form>
-                                        </div>
+                                       
                                         @elseif (Auth::check())
-                                            <div class="col-xs-1-12" style="margin-right:7px;">
+                                        <div class="row">
+                                            <div class="col" style="margin-right:7px;">
                                                 <i onclick=updateLikes({{$comment->id}},{{Auth::user()->id}}) class="fa fa-thumbs-up"></i>
                                                 <p id = "likes">{{$comment->likes}}</p>
                                             </div>
-                                            <div class="col-xs-1-12">
-                                                    <i onclick=updateDislikes({{$comment->id}},{{Auth::user()->id}}) class="fa fa-thumbs-down"></i>
-                                                    <p id = "dislikes">{{$comment->dislikes}}</p>
+                                            <div class="col">
+                                                <i onclick=updateDislikes({{$comment->id}},{{Auth::user()->id}}) class="fa fa-thumbs-down"></i>
+                                                <p id = "dislikes">{{$comment->dislikes}}</p>
                                             </div>
+                                            
+                                            
+                                        </div>
                                         @else
+                                        <div class="row ">
                                             <div class="col-xs-1-12" style="margin-right:7px;">
                                                 <i class="fa fa-thumbs-up"></i>
                                                 <p id = "likes">{{$comment->likes}}</p>
@@ -108,13 +117,26 @@
                                                 <i class="fa fa-thumbs-down"></i>
                                                 <p id = "dislikes">{{$comment->dislikes}}</p>
                                             </div>
+                                            
+                                            
+                                        </div>
                                          @endif
                                     </div>
                                     <div class="row">
                                         <div class="col" id ="{{$comment->id}}6" style="display:block;">
-                                            
                                             {{$comment->content}}
                                         </div>  
+                                        @if (Auth::user() == $comment->user)
+                                        <div class="row">
+                                            <div class="col-xs-1-12">
+                                                <button  id="{{$comment->id}}1" class="btn btn-link"   type="submit" style="display:block;" onclick="showDiv({{$comment->id}}, {{$comment->id}}1, {{$comment->id}}2, {{$comment->id}}3)" >Editar</button>
+                                                <button  id="{{$comment->id}}2" class="btn btn-link"   type="submit" style="display:none;"  onclick="sendUpdate({{$comment->id}}4)">Terminar</button>
+                                            </div>
+                                            <div class="col-xs-1-12">
+                                                    <button  class="btn btn-link" type="submit" onclick = "deleteComic({{$comment->id}}, this)">Borrar</button>
+                                            </div>
+                                        </div>
+                                        @endif
                                         
                                     </div>   
                                     <form action="{{route('comments.update', $comment -> id)}}" method = "POST">
@@ -167,13 +189,13 @@
 
 
 <script>
-    window.Echo.channel('commentsChannel').listen('CommentsEvent', (e) => {     
+    
+    $( document ).ready(function() {
+        window.Echo.channel('commentsChannel').listen('CommentsEvent', (e) => {     
 
         console.log("hola");
 
-    }); 
-    $( document ).ready(function() {
-        
+        }); 
     });
     function showDiv(id_comment, id_el1, id_el2, id_el3) {
         document.getElementById(id_comment).style.display = "none";
@@ -220,8 +242,8 @@
     function deleteComic(id, r){
         console.log(id);
         let str = 'http://superspot.test/comments/'+id+''
-        console.log(r.parentNode.parentNode.parentNode);
-        var i = r.parentNode.parentNode.rowIndex;
+        console.log(r.parentNode.parentNode.parentNode.parentNode);
+        var i = r.parentNode.parentNode.parentNode.parentNode.rowIndex;
         if (i === undefined) {
             i = r.parentNode.parentNode.parentNode.rowIndex;
         }

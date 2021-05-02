@@ -40,7 +40,4 @@ window.Echo = new Echo({
      forceTLS: true
  });
 
- window.Echo.channel('commentsChannel').listen('PackageUpdateNotification', (e) => {
-    console.log(e);
-    console.log("hellos");
-});
+ 

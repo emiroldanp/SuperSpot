@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Serie;
 use App\Models\Comment;
 use App\Models\User;
+use Illuminate\Support\Facades\Http;
+use Carbon\Carbon;
+
 
 class SeriesController extends Controller
 {
@@ -16,10 +19,15 @@ class SeriesController extends Controller
      */
     public function index(User $user)
     {
-        $series = Serie::all();
         
-        
-        return view('index', ['series' => $series], ['user' => $user]);
+
+        $current_date_time = Carbon::now()->toDateTimeString();
+
+        $hash = md5($current_date_time .'029df42137a1ad8105bcf66a208bc081efbf4559abae7768139eb68365c998fc37636a75');
+        $response = Http::get('https://gateway.marvel.com:443/v1/public/comics?format=comic&formatType=comic&noVariants=true&limit=100&orderBy=title&ts='. $current_date_time . '&apikey=abae7768139eb68365c998fc37636a75&hash='. $hash)['data'];
+
+        //dd($response["results"], $series);
+        return view('index', ['user' => $user])->with("series",$response);
     }
 
     /**
@@ -52,14 +60,18 @@ class SeriesController extends Controller
     public function show($id)
     {
         //
-        $serie = Serie::find($id);
+        $current_date_time = Carbon::now()->toDateTimeString();
+
+        $hash = md5($current_date_time .'029df42137a1ad8105bcf66a208bc081efbf4559abae7768139eb68365c998fc37636a75');
+        $response = Http::get('https://gateway.marvel.com:443/v1/public/comics/'. $id .'?&ts='. $current_date_time . '&apikey=abae7768139eb68365c998fc37636a75&hash='. $hash)['data'];
+        //dd($response);
         
         try {
             $comments = $serie -> comments;
-            return view('series.serie', ['serie'=>$serie], ['comments'=>$comments]);
+            return view('series.serie', ['comments'=>$comments])->with("series",$response["results"][0]);
         } catch (\Throwable $th) {
             
-            return view('series.serie', ['serie'=>$serie]);
+            return view('series.serie')->with("serie", $response["results"][0]);
         }
        
     }

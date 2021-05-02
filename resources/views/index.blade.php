@@ -29,14 +29,16 @@
     </div>
     <div class="container">
             <div class="row mt-5" style="margin: 0 auto">
-                @foreach($series as $item)
+                @foreach($series["results"] as $item)
                 <div class="col-md-4 col-lg-3 mb-3 d-flex justify-content-center">
                     <div class="card-deck">
                             <div class="card" style="width: 12rem;">
-                                <img class="card-img-top" src="https://source.unsplash.com/random" alt="Card image cap">
+                                @if (count($item["images"]) > 0)
+                                    <img class="card-img-top img-thumbnail" src="{{$item["images"][0]["path"]}}/portrait_incredible.jpg" alt="Card image cap" style="max-width: 200px; max-height:300px;">
+                                @endif
                                 <div class="card-body">
-                                    <a class="card-title nombre-comic" href="{{route('series.show', $item->id)}}">{{$item->name}}</a>
-                                    <p class="card-text"> <small class="text-muted">Rating: {{$item->rating}}</small></p>
+                                    <a class="card-title nombre-comic" href="{{route('series.show', $item["id"])}}">{{$item["title"]}}</a>
+                                    
                                 </div>
                             </div>
 

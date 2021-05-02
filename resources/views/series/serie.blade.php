@@ -14,7 +14,7 @@
         <br>
         <div class="row">
             <div class="col-6">
-                <h1>{{$serie->name}}</h1>
+                <h1>{{$serie["title"]}}</h1>
             </div>
             
             
@@ -22,38 +22,49 @@
         <br>
         <div class = "row">
             <div class="col-3">
-                <img class="card-img-top img-thumbnail" src="https://source.unsplash.com/random" alt="Card image cap" style="max-width: 200px; max-height:300px;">
+               
+                @if (count($serie["images"]) > 0)
+                    <img class="card-img-top img-thumbnail" src="{{$serie["images"][0]["path"]}}/portrait_xlarge.jpg" alt="Card image cap" style="max-width: 200px; max-height:300px;">
+                @endif
             </div>
-            <div class="col-6">
-                <h4>Resumen</h4>
+            <div class="col-5">
+                <h4>Description</h4>
                 <p>
-                    Aqui va el resumen de la serie
+                    {{$serie["description"]}}
                 </p>
+            </div>
+            <div class="col-2">
+                <div class="row">
+                    <div class="p-3 border bg-light">Issue Number {{$serie["issueNumber"]}}</div>
+                    
+                </div>  
+                <br> 
+                <div class="row">
+                    <div class="p-3 border bg-light">
+                        Creators
+                        <br>
+                        @foreach ($serie["creators"]["items"] as $item)
+                        {{$item["name"]}} 
+                        @endforeach
+                        
+                    </div>
+                </div>                     
+              
             </div>
         </div>
         <br>
         <div class="row">
-            <div class="col-6">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Volumen</th>
-                            <th>Fecha</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <th>1</th>
-                        <th>12/01/2018</th>
-                    </tbody>
-                </table>
-            </div>
+         
+            
+        </div>
+        <div class="row">
             <div class="col-6">
                 <div class="row">
-                    <h4>Comentarios</h4>
+                    <h4>Comments</h4>
                 </div>
                 <div class="row">
                     <table class="table">
-                        <tbody>
+                        {{-- <tbody>
                             @foreach ($comments as $comment)
                             <tr>
                                 <td>    
@@ -95,7 +106,7 @@
                                 </td>
                             </tr>
                             @endforeach
-                        </tbody>
+                        </tbody> --}}
                     </table>
                 </div>
                 @if (Auth::check())

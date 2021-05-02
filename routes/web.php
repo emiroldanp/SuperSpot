@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
+use App\Events\CommentsEvent;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,12 @@ use App\Http\Controllers;
 */
 
 Route::get('/', 'App\Http\Controllers\SeriesController@index' );
+
+
+//Ruta para crear eventos en broadcast
+Route::get('/event/{comment}', function($comment){
+    event(new CommentsEvent($comment));
+});
 
 //Ruta al controlador de las Commentarios
 Route::resource('comments', 'App\Http\Controllers\CommentsController');

@@ -26,10 +26,9 @@
      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" style=" width:100%;">
             @foreach ($news as $item)
-           
-                <div class="carousel-item">
+                <div class="carousel-item justify-content-center">
                     <a href="{{$item["url"]}}">
-                     <img class="d-block w-100" src={{$item["urlToImage"]}} alt="Second slide">
+                     <img class="d-block w-100" src={{$item["urlToImage"]}} alt="Second slide" height="400" >
                     </a>
                     <div class="carousel-caption d-none d-md-block">
                         <h5>{{$item["title"]}}</h5>

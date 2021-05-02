@@ -28,7 +28,7 @@ class SeriesController extends Controller
         $date =Carbon::today()->toDateString();
        
         
-        $news = Http::get('https://newsapi.org/v2/everything?q=marvel&sortBy=relevancy&apiKey=4bbe98577e3c479b86a2691323a56896');
+        $news = Http::get('https://newsapi.org/v2/everything?q=marvel&sortBy=relevancy&language=en&page=1&apiKey=4bbe98577e3c479b86a2691323a56896');
         //dd($news);
         return view('index', ['user' => $user])->with("series",$response)->with("news", $news["articles"]);
     }

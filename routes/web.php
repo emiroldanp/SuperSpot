@@ -19,12 +19,14 @@ Route::get('/', 'App\Http\Controllers\SeriesController@index' );
 
 
 //Ruta para crear eventos en broadcast
-Route::get('/event/{comment}', function($comment){
-    event(new CommentsEvent($comment));
+Route::get('/event/{comment}/{id_escritor}/{id_usuario}', function($comment, $id_escritor, $id_usuario){
+    event(new CommentsEvent($comment, $id_escritor, $id_usuario));
 });
 
 //Ruta al controlador de las Commentarios
 Route::resource('comments', 'App\Http\Controllers\CommentsController');
+Route::put('comments/likes/{id}', 'App\Http\Controllers\CommentsController@updateLikes');
+Route::put('comments/dislikes/{id}', 'App\Http\Controllers\CommentsController@updateDislikes');
 
 //Ruta al controlador de las Comics
 Route::resource('comics', 'App\Http\Controllers\ComicsController');

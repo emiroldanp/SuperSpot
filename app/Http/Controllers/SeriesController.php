@@ -26,7 +26,7 @@ class SeriesController extends Controller
         $hash = md5($current_date_time .'029df42137a1ad8105bcf66a208bc081efbf4559abae7768139eb68365c998fc37636a75');
         $response = Http::get('https://gateway.marvel.com:443/v1/public/comics?format=comic&formatType=comic&noVariants=true&limit=100&orderBy=title&ts='. $current_date_time . '&apikey=abae7768139eb68365c998fc37636a75&hash='. $hash)['data'];
 
-       // $news = Http::get('https://newsapi.org/v2/everything?q=Marvel&from=2021-05-02&sortBy=popularity&apiKey=4bbe98577e3c479b86a2691323a56896');
+    // $news = Http::get('https://newsapi.org/v2/everything?q=Marvel&from=2021-05-02&sortBy=popularity&apiKey=4bbe98577e3c479b86a2691323a56896');
         //dd($news["articles"]);
         return view('index', ['user' => $user])->with("series",$response);
     }
@@ -68,11 +68,12 @@ class SeriesController extends Controller
         //dd($response);
         
         try {
-            $comments = $serie -> comments;
-            return view('series.serie', ['comments'=>$comments])->with("series",$response["results"][0]);
+            $comments = Comment::where("id_comic","=", $id)->get();
+           
+            return view('series.comic', ['comments'=>$comments])->with("serie",$response["results"][0]);
         } catch (\Throwable $th) {
             
-            return view('series.serie')->with("serie", $response["results"][0]);
+            return view('series.comic')->with("serie", $response["results"][0]);
         }
        
     }

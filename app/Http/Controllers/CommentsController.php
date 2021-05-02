@@ -44,12 +44,11 @@ class CommentsController extends Controller
         $comment = new Comment();
         $comment->content = $arr['content'];
         $comment->user()->associate(Auth::user());
-    
-        $id_serie = $arr['id_serie'];
-        $serie = Serie::find($id_serie)->comments()->save($comment);
+        $comment->id_comic = (int)$arr['id_comic'];
+        $comment->save();
 
        
-        return redirect()->route('series.show', $id_serie);
+        return response()->json($comment);
 
 
     }
@@ -91,9 +90,9 @@ class CommentsController extends Controller
         $arr = $request->input();
         $comment = Comment::find($id);
         $comment->content = $arr['content'];
-        $id_serie =  $comment->serie_id;
+        $id_comic =  $comment->id_comic;
         $comment -> save();
-        return redirect()->route('series.show', $id_serie);
+        return redirect()->route('series.show', $id_comic);
     }
 
     /**
@@ -106,8 +105,21 @@ class CommentsController extends Controller
     {
         //
         $comment = Comment::find($id);
-        $id_serie =  $comment->serie_id;
         $comment->delete();
-        return redirect()->route('series.show', $id_serie);
+       
+    }
+
+    public function updateLikes($id){
+        $comment = Comment::find($id);
+        $comment->likes = $comment->likes + 1;
+        $comment -> save();
+        return response()->json($comment);
+    }
+
+    public function updateDislikes($id){
+        $comment = Comment::find($id);
+        $comment->dislikes = $comment->dislikes + 1;
+        $comment -> save();
+        return response()->json($comment);
     }
 }

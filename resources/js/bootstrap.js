@@ -39,3 +39,8 @@ window.Echo = new Echo({
      cluster: process.env.MIX_PUSHER_APP_CLUSTER,
      forceTLS: true
  });
+
+ window.Echo.channel('commentsChannel').listen('PackageUpdateNotification', (e) => {
+    console.log(e);
+    console.log("hellos");
+});

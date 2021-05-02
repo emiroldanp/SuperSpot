@@ -17,7 +17,9 @@ class CreateCommentsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string("content");
-            $table->('serie_id')->references('id')->on('series');
+            $table->integer("id_comic");
+            $table->integer("likes")->default(0);
+            $table->integer("dislikes")->default(0);
             $table->foreignId('user_id')->references('id')->on('users');
             
 

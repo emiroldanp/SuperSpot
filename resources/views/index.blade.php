@@ -24,7 +24,7 @@
         @include('includes.navbar')
 
      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner" style=" width:100%;">
+        <div class="carousel-inner" style=" width:100%;z-index: -1;">
             @foreach ($news as $item)
                 <div class="carousel-item justify-content-center">
                     <a href="{{$item["url"]}}">

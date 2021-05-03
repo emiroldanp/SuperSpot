@@ -4,14 +4,14 @@
     @extends('layouts.main')
     
     <script src='../js/app.js'></script>
-    <script src="{{ asset('js/app.js') }}"></script>
-
+    
 </head>
 @include('includes.navbar')
     
 
 <body>
     <div class="container-md">
+        
         <br>
         <div class="row">
             <a name="" class="btn btn-outline-secondary btn-sm" href="{{route('series.index')}}" role="button">Atrás</a> 
@@ -82,11 +82,11 @@
                                             <div class="row flex-row-reverse">
                                                 <div class="col-xs-1-12">
                                                     <i class="fa fa-thumbs-down"></i>
-                                                    <p id = "dislikes">{{$comment->dislikes}}</p>
+                                                    <p id = "dislikes{{$comment->id}}">{{$comment->dislikes}}</p>
                                                 </div>
                                                 <div class="col-xs-1-12" style="margin-right:7px;">
                                                     <i class="fa fa-thumbs-up"></i>
-                                                    <p id = "likes">{{$comment->likes}}</p>
+                                                    <p id = "likes{{$comment->id}}">{{$comment->likes}}</p>
                                                 </div>
                                                 
                                             </div>
@@ -98,11 +98,11 @@
                                         <div class="row">
                                             <div class="col" style="margin-right:7px;">
                                                 <i onclick=updateLikes({{$comment->id}},{{Auth::user()->id}}) class="fa fa-thumbs-up"></i>
-                                                <p id = "likes">{{$comment->likes}}</p>
+                                                <p id = "likes{{$comment->id}}">{{$comment->likes}}</p>
                                             </div>
                                             <div class="col">
                                                 <i onclick=updateDislikes({{$comment->id}},{{Auth::user()->id}}) class="fa fa-thumbs-down"></i>
-                                                <p id = "dislikes">{{$comment->dislikes}}</p>
+                                                <p id = "dislikes{{$comment->id}}">{{$comment->dislikes}}</p>
                                             </div>
                                             
                                             
@@ -111,11 +111,11 @@
                                         <div class="row ">
                                             <div class="col-xs-1-12" style="margin-right:7px;">
                                                 <i class="fa fa-thumbs-up"></i>
-                                                <p id = "likes">{{$comment->likes}}</p>
+                                                <p id = "likes{{$comment->id}}">{{$comment->likes}}</p>
                                             </div>
                                             <div class="col-xs-1-12">
                                                 <i class="fa fa-thumbs-down"></i>
-                                                <p id = "dislikes">{{$comment->dislikes}}</p>
+                                                <p id = "dislikes{{$comment->id}}">{{$comment->dislikes}}</p>
                                             </div>
                                             
                                             
@@ -182,6 +182,7 @@
 
     
 </head>
+
     
 
 </body>
@@ -190,13 +191,7 @@
 
 <script>
     
-    $( document ).ready(function() {
-        window.Echo.channel('commentsChannel').listen('CommentsEvent', (e) => {     
-
-        console.log("hola");
-
-        }); 
-    });
+   
     function showDiv(id_comment, id_el1, id_el2, id_el3) {
         document.getElementById(id_comment).style.display = "none";
         document.getElementById(id_el2).style.display = "block";
@@ -276,7 +271,7 @@
             }
         }).done(function(response) {
             console.log("Exito", current_user)
-            document.getElementById("likes").innerHTML = response.likes
+            document.getElementById("likes"+response.id).innerHTML = response.likes
             updateEvent(response.id, response.user_id, current_user)
         })
         .fail(function(jqXHR, response) {
@@ -301,7 +296,7 @@
             }
         }).done(function(response) {
             console.log("Exito")
-            document.getElementById("dislikes").innerHTML = response.dislikes
+            document.getElementById("dislikes"+response.id).innerHTML = response.dislikes
             updateEvent(response.id, response.user_id, current_user)
         })
         .fail(function(jqXHR, response) {
@@ -325,7 +320,7 @@
             
         })
         .fail(function(jqXHR, response) {
-            console.log('Fallido', response);
+            console.log('Fallido', jqXHR);
         });
 
     }

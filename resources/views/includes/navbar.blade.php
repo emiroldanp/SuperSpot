@@ -3,6 +3,7 @@
     @font-face {
         font-family: "Shaka Pow";
         src: url('/fonts/Shaka Pow.ttf');
+        color: black;
     }
     
    

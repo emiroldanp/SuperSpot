@@ -4,6 +4,19 @@
         font-family: "Shaka Pow";
         src: url('/fonts/Shaka Pow.ttf');
     }
+    .navbar{
+    background-color: #C72523 !important;
+    
+    }
+    .navbar-brand{
+        color: white !important;
+      
+    }
+    .nav-item{
+        margin-right: 10px ;
+    }
+   
+   
 </style>
 <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -35,9 +48,9 @@
                 @endif
         </div>
     </nav>
-    <div class="toast" data-delay="8000" style="position: absolute; top: 10; right: 10px;">
+    <div class="toast" data-delay="8000" style="position: absolute; top: 10; right: 10px;z-index: 5;">
       <div class="toast-header">
-        <svg class=" rounded mr-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
+        <svg class=" rounded mr-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"  role="img">
                       <rect fill="#007aff" width="100%" height="100%" /></svg>
         <strong class="mr-auto">Hey!!</strong>
         <small class="text-muted"></small>
@@ -45,7 +58,7 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
       </div>
-      <div class="toast-body">
+      <div class="toast-body" style="opacity: 1 !important;">
         Someone liked your comment
       </div>
     </div>

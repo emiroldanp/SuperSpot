@@ -57,32 +57,7 @@
             <button type="submit" class="btn btn-outline-secondary btn-sm">Submit</button>
         </form>
         <br>
-        <h3>Mis categorias</h3>
-        <table>
-            <thead>
-           
-            </thead>
-            <tbody>
-                @foreach ($categories as $item)
-                    <tr>
-                        <td>{{$item->name}}</td>
-                        <td>
-                            
-                            <form action="{{route('category.destroy', $item->id)}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <input type="hidden" name="user_id" value="{{$user->id}}">
-                                <button type="submit" class="btn btn-outline-secondary btn-sm">Borrar</button>
-                            </form>
-                        </td>
-                    </tr>
-                
-                @endforeach
-            </tbody>
-        </table>
-        <br>
-        <label> Agregar Nuevas Categorias</label>
-        <a href="{{route('category.show', $user->id)}}" class="btn btn-outline-secondary btn-sm">Agregar +</a>
+        
         
     </div>
     <br>

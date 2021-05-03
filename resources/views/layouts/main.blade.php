@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" href="{{ asset('/css/app.css')}}">
+    
     <link rel="stylesheet" href="{{ asset('/css/navbar.css')}}">
     <link rel="stylesheet" href="{{ asset('/css/footer.css')}}">
+    <script src='../js/app.js'></script>
     <script src="{{ asset('/js/event.js')}}"></script>
-
+    <link rel="stylesheet" href="{{ asset('/css/main.css')}}">
+    
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
      

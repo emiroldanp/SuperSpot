@@ -19,36 +19,39 @@
 </head>
 
 
-<body>
+<body class = "imageBackground">
+    @include('includes.navbar')
    
-        @include('includes.navbar')
-
-     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner" style=" width:100%;z-index: -1;">
-            @foreach ($news as $item)
-                <div class="carousel-item justify-content-center">
-                    <a href="{{$item["url"]}}">
-                     <img class="d-block w-100" src={{$item["urlToImage"]}} alt="Second slide" height="400" >
-                    </a>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>{{$item["title"]}}</h5>
-                        <p>{{$item["description"]}}</p>
+  
+    <div class="container-md" style="background-color:white;">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" style=" width:100%;">
+                @foreach ($news as $item)
+                    <div class="carousel-item justify-content-center">
+                        <a href="{{$item["url"]}}">
+                         <img class="d-block w-100" src={{$item["urlToImage"]}} alt="Second slide" height="400" >
+                        </a>
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>{{$item["title"]}}</h5>
+                            <p>{{$item["description"]}}</p>
+                        </div>
+                       
                     </div>
-                   
-                </div>
-           
-            @endforeach
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
+               
+                @endforeach
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
 
+     
+       
     <div class="jumbotron" style="max-height: 50px">
         <h1>Comics</h1>
 
@@ -77,6 +80,8 @@
     <footer>
         @include('includes.footer')
     </footer>
+    </div>
+   
 </body>
 <script>
     $(document).ready(function () {

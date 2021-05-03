@@ -19,14 +19,14 @@ Route::get('/', 'App\Http\Controllers\SeriesController@index' );
 
 
 //Ruta para crear eventos en broadcast
-Route::get('/event/{comment}/{id_escritor}/{id_usuario}', function($comment, $id_escritor, $id_usuario){
+Route::get('/series/event/{comment}/{id_escritor}/{id_usuario}', function($comment, $id_escritor, $id_usuario){
     event(new CommentsEvent($comment, $id_escritor, $id_usuario));
 });
 
 //Ruta al controlador de las Commentarios
-Route::resource('comments', 'App\Http\Controllers\CommentsController');
-Route::put('comments/likes/{id}', 'App\Http\Controllers\CommentsController@updateLikes');
-Route::put('comments/dislikes/{id}', 'App\Http\Controllers\CommentsController@updateDislikes');
+Route::resource('/series/comments', 'App\Http\Controllers\CommentsController');
+Route::put('/series/comments/likes/{id}', 'App\Http\Controllers\CommentsController@updateLikes');
+Route::put('/series/comments/dislikes/{id}', 'App\Http\Controllers\CommentsController@updateDislikes');
 
 //Ruta al controlador de las Comics
 Route::resource('comics', 'App\Http\Controllers\ComicsController');
@@ -52,3 +52,4 @@ Route::any('logout', 'App\Http\Controllers\AuthController@logout')->name('auth.l
 Route::get('show', 'App\Http\Controllers\AuthController@show')->name('auth.show');
 Route::any('updateUser', 'App\Http\Controllers\AuthController@updateUser')->name('auth.update-user');
 Route::any('updatePassword', 'App\Http\Controllers\AuthController@updatePassword')->name('auth.update-password');
+

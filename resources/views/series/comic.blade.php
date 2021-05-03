@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     @extends('layouts.main')
+    <link rel="stylesheet" href="{{ asset('/css/app.css')}}">
+    <link rel="stylesheet" href="{{ asset('/css/registro.css')}}">
     <script src="{{ asset('/js/ajax.js')}}"></script>
 </head>
 @include('includes.navbar')
@@ -11,11 +13,11 @@
     <div class="container-md" style="background-color:white;">
         
         <br>
-        <div class="row">
-            <a name="" class="btn btn-outline-secondary btn-sm" href="{{route('series.index')}}" role="button">Atrás</a> 
+        <div class="row m-2">
+            <a name="" class="btn btn-outline-light bg-azul1 btn-sm" href="{{route('series.index')}}" role="button">Atrás</a> 
         </div>
         <br>
-        <div class="row">
+        <div class="row m-4">
             <div class="col-6">
                 <h1>{{$serie["title"]}}</h1>
             </div>
@@ -23,7 +25,7 @@
             
         </div>
         <br>
-        <div class = "row">
+        <div class = "row m-4">
             <div class="col-3">
                
                 @if (count($serie["images"]) > 0)
@@ -38,12 +40,12 @@
             </div>
             <div class="col-2">
                 <div class="row">
-                    <div class="p-3 border bg-light">Issue Number {{$serie["issueNumber"]}}</div>
+                    <div class="p-3 border text-dark bg-gris1">Issue Number {{$serie["issueNumber"]}}</div>
                     
                 </div>  
                 <br> 
                 <div class="row">
-                    <div class="p-3 border bg-light">
+                    <div class="p-3 border text-dark bg-gris1">
                         Creators
                         <br>
                         @foreach ($serie["creators"]["items"] as $item)
@@ -60,7 +62,7 @@
          
             
         </div>
-        <div class="row">
+        <div class="row m-4">
             <div class="col-6">
                 <div class="row">
                     <h4>Comments</h4>
@@ -163,7 +165,7 @@
                         <div class="row">
                             <div class="col">
                                 <input id="id_comic" type="hidden" name='id_serie' value= {{$serie["id"]}}>
-                                <input class = "btn btn-primary"  value = 'Subir' onclick= createCommentAjax()>
+                                <input class = "btn btn-primary bg-rojo1"  value = 'Subir Comentario' onclick= createCommentAjax()>
                             </div>  
                         </div>
                     </div>

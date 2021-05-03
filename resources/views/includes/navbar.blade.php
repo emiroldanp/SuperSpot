@@ -4,12 +4,38 @@
         font-family: "Shaka Pow";
         src: url('/fonts/Shaka Pow.ttf');
     }
+
+    .bg-rojo3{
+        background-color: #C72523 !important;
+    }
+
+    .bg-azul1{
+        background-color: #4D8AB5 !important;
+    }
+
+    .bg-rojo1{
+        background-color: #4D1518 !important;
+    }
+
+    .bg-rojo2{
+        background-color: #951E22 !important;
+    }
+
+
+
+    .bg-gris1{
+        background-color: #B9BEBA !important;
+    }
+
+    .bg-azul2{
+        background-color: #1E2639 !important;
+    }
     
    
    
 </style>
 <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-secondary bg-rojo3">
         <a class="navbar-brand" href="{{route('series.index')}}" style="font-family: Shaka Pow">Comicwire</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -21,7 +47,7 @@
                         <input type="hidden" id= "currentUser" value="{{Auth::user()->id}}">
                         <a  class="btn btn-secundary" href="{{route('auth.show')}}"  role="button">{{ auth()->user()->name}}</a>
 
-                        <a name="" id="" class="btn btn-primary" href="{{route('auth.logout')}}" role="button">Salir</a>
+                        <a name="" id="" class="btn btn-outline-light bg-azul1" href="{{route('auth.logout')}}" role="button">Salir</a>
                     </h4>
 
                 @endauth

@@ -35,7 +35,7 @@
                 @endif
         </div>
     </nav>
-    <div class="toast"  style="position: absolute; top: 10; right: 0;">
+    <div class="toast" data-delay="8000" style="position: absolute; top: 10; right: 10px;">
       <div class="toast-header">
         <svg class=" rounded mr-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
                       <rect fill="#007aff" width="100%" height="100%" /></svg>

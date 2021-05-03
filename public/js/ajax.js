@@ -1,25 +1,26 @@
 
-    
+
     function deleteComic(id, r){
         console.log(id);
-        let str = 'http://superspot.test/comments/'+id+''
+        let str = 'comments/'+id+''
         console.log(document.getElementById("tableRow"+id));
         document.getElementById("tableRow"+id).remove();
-       
+
         $.ajax({
             url: str,
             method: 'DELETE',
             headers:{
                 'Accept': 'application/json',
-                'X-CSRF-Token': $('meta[name="csrf-token"').attr('content')
+                'X-CSRF-Token': $('meta[name="csrf-token"').attr('content'),
+                'Access-Control-Allow-Origin': '*'
             }
         })
-        
-        
+
+
     }
     function updateLikes(id, current_user){
         let status = "true"
-        let str = 'http://superspot.test/comments/likes/'+id+''
+        let str = 'comments/likes/'+id+''
         console.log(str);
         $.ajax({
             url: str,
@@ -30,7 +31,7 @@
             },
             data:{
                 id:id,
-                status:status    
+                status:status
             }
         }).done(function(response) {
             console.log("Exito", current_user)
@@ -44,7 +45,7 @@
     }
     function updateDislikes(id, current_user){
         let status = "true"
-        let str = 'http://superspot.test/comments/dislikes/'+id+''
+        let str = 'comments/dislikes/'+id+''
         console.log(str);
         $.ajax({
             url: str,
@@ -55,7 +56,7 @@
             },
             data:{
                 id:id,
-                status:status    
+                status:status
             }
         }).done(function(response) {
             console.log("Exito")
@@ -69,7 +70,7 @@
     }
     function updateEvent(id, escritor, usuario){
 
-        let str = 'http://superspot.test/event/'+id+'/'+escritor+'/'+usuario
+        let str = 'event/'+id+'/'+escritor+'/'+usuario
 
         $.ajax({
             url: str,
@@ -80,7 +81,7 @@
             }
         }).done(function(response) {
             console.log( "Exito");
-            
+
         })
         .fail(function(jqXHR, response) {
             console.log('Fallido', jqXHR);

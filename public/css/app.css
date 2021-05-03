@@ -10017,9 +10017,9 @@ h3 {
 
 a:link {
   text-decoration: none;
-  color: white;
+  color: black;
 }
 
 a:hover {
-  color: #B9BEBA;
+  color: #555555;
 }

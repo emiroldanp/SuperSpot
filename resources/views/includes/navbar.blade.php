@@ -4,17 +4,7 @@
         font-family: "Shaka Pow";
         src: url('/fonts/Shaka Pow.ttf');
     }
-    .navbar{
-    background-color: #C72523 !important;
     
-    }
-    .navbar-brand{
-        color: white !important;
-      
-    }
-    .nav-item{
-        margin-right: 10px ;
-    }
    
    
 </style>
@@ -58,7 +48,7 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
       </div>
-      <div class="toast-body" style="opacity: 1 !important;">
+      <div class="toast-body" >
         Someone liked your comment
       </div>
     </div>

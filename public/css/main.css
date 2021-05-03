@@ -3,3 +3,22 @@
    
     background-position:center;
 }
+
+.btn-primary{
+    background-color: #42547e;
+    color: white;
+    border-color:  #42547e;
+}
+.btn-primary:hover{
+    background-color: #1e2639;
+    border-color:  #1e2639;
+}
+
+a:link {
+    text-decoration:none;
+    color: #42547e;
+}
+
+a:hover{
+    color: #42547e;
+}

@@ -2,34 +2,45 @@
 
 namespace Tests\Unit;
 
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\TestCase;
 
 class LoginTests extends TestCase
 {
+    use RefreshDatabase;
+
     /**
-     * A basic unit test example.
+     * Tests if the user is created
      *
      * @return void
      */
-
-     //dudas asesoría
-     /*
-        - tengo que checar credenciales en base de datos o puedo usar dummy data
-        - como jalo la informacion de la base de datos
-     */
-
-     public function user_can_create_account()
+     public function test_user_creation()
      {
-         //llenar formulario
-         //ir a base de datos y verificar que se haya creado
-         //regresar resultado
+         $user = new User();
+         $user->name = "Carlos";
+         $user->email = "carlos@gmail.com";
+         $user->password = "12345";
+         $user->save();
+
+         $storedUser = User::find($user->id);
+
+         $this->assertTrue($storedUser->name == $user->name);
      }
 
     public function user_can_login_with_valid_credentials()
     {
-        //ir a base de datos por usuario y contraseña
-        //llenar campos
-        //verificar que se pueda acceder (cambio de view)
+        $user = new User();
+        $user->name = "Carlos";
+        $user->email = "carlos@gmail.com";
+        $user->password = "12345";
+        $user->save();
+
+         $storedUser = User::find($user->id);
+         $storedPassword = User::find($storedUser->password);
+         $storedEmail = User::find($storedUser->email);
+
+         $this->assertTrue($storedUser->email == $storedEmail && $storedUser->password == $storedPassword);
     }
 
     public function user_cannot_login_with_invalid_credentials()
@@ -38,6 +49,17 @@ class LoginTests extends TestCase
         //llenar campos
         //verificar que no se pueda acceder (no haya cambio de view)
         //mensaje de error
+        $user = new User();
+        $user->name = "Carlos";
+        $user->email = "carlos@gmail.com";
+        $user->password = "12345";
+        $user->save();
+
+         $storedUser = User::find($user->id);
+         $storedPassword = User::find($storedUser->password);
+         $storedEmail = User::find($storedUser->email);
+
+         $this->assertTrue($storedUser->email != $storedEmail || $storedUser->password != $storedPassword);
     }
 
     public function user_can_leave_comment()

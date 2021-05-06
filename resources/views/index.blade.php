@@ -11,6 +11,7 @@
     <title>Index</title>
     <link rel="stylesheet" href="{{ asset('/css/app.css')}}">
     <link rel="stylesheet" href="{{ asset('/css/index.css')}}">
+    <script src="{{ asset('/js/ajax.js')}}"></script>
     <script src="/js/app.js"></script>
    
 </head>
@@ -84,6 +85,7 @@
     $(document).ready(function () {
         $('#carouselExampleControls').find('.carousel-item').first().addClass('active');
     });
+
 </script>
 
 </html>

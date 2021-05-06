@@ -48,7 +48,7 @@
                         <input type="hidden" id= "currentUser" value="{{Auth::user()->id}}">
                         <a  class="btn btn-secundary" href="{{route('auth.show')}}"  role="button">{{ auth()->user()->name}}</a>
 
-                        <a name="" id="" class="btn btn-outline-light bg-azul1" href="{{route('auth.logout')}}" role="button">Salir</a>
+                        <a name="" id="" class="btn text-light bg-azul1" href="{{route('auth.logout')}}" role="button">Salir</a>
                     </h4>
 
                 @endauth
@@ -58,7 +58,7 @@
                         <a name="" id="" class="btn btn-secundary" href="{{route('auth.login')}}" role="button">Ingresar</a>
                     </li>
                     <li class="nav-item">
-                        <a name="" id="" class="btn btn-primary" href="{{route('auth.register')}}" role="button">Registro</a>
+                        <a name="" id="" class="btn text-light bg-azul1" href="{{route('auth.register')}}" role="button">Registro</a>
                     </li>
                 </ul>
 

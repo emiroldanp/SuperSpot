@@ -27,7 +27,6 @@
         <br>
         <div class = "row m-4">
             <div class="col-3">
-               
                 @if (count($serie["images"]) > 0)
                     <img class="card-img-top img-thumbnail" src="{{$serie["images"][0]["path"]}}/portrait_xlarge.jpg" alt="Card image cap" style="max-width: 200px; max-height:300px;">
                 @endif
@@ -232,6 +231,10 @@
         });
     }
    
+    $(document).ready(function () {
+    $('#dtBasicExample').DataTable();
+    $('.dataTables_length').addClass('bs-select');
+    });
     
 
     

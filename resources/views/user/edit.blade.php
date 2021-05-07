@@ -16,7 +16,7 @@
         <br>
         <div class="row m-3">
         
-            <a name="" class="btn btn-outline-light btn-sm bg-azul1" href="{{route('series.index')}}" role="button">Go back</a> 
+            <a name="" class="btn btn-outline-light btn-sm bg-azul1" href="{{route('series.index')}}" role="button">Back</a> 
         </div>
     
         <div class="m-4">

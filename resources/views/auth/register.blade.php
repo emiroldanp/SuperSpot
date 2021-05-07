@@ -24,7 +24,7 @@
                     <a class="rojo3 " href="{{route('series.index')}}" style="font-family: Shaka Pow; font-size:3vw">Comicwire</a>
                 </div>
                 <article class="card-body mx-auto" style="max-width: 400px;">
-                    <h4 class="card-title mt-1 text-center">Crear Cuenta</h4>
+                    <h4 class="card-title mt-1 text-center">Create an Account</h4>
                     
                     <p>
                         <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
@@ -35,30 +35,30 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                          </div>
-                        <input name="name" class="form-control" placeholder="Nombre" type="text">
+                        <input name="name" class="form-control" placeholder="Name" type="text">
                     </div> <!-- form-group// -->
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                          </div>
-                        <input name="email" class="form-control" placeholder="Correo electronico" type="email">
+                        <input name="email" class="form-control" placeholder="Email" type="email">
                         </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                         </div>
-                        <input class="form-control" placeholder="Crear contraseña" type="password" name='password'>
+                        <input class="form-control" placeholder="Password" type="password" name='password'>
                     </div> <!-- form-group// -->
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                         </div>
-                        <input class="form-control" placeholder="Confirmar Contraseña" type="password" name='password_confirmation'>
+                        <input class="form-control" placeholder="Confirm Password" type="password" name='password_confirmation'>
                     </div> <!-- form-group// -->                                      
                     <div class="form-group">
-                        <button type="submit" class="btn text-light bg-azul1 btn-block"> Crear Cuenta  </button>
+                        <button type="submit" class="btn text-light bg-azul1 btn-block"> Create  </button>
                     </div> <!-- form-group// -->      
-                    <p class="text-center">Ya tienes cuenta? <a href="{{route('auth.login')}}">Ingresar</a> </p>                                                                 
+                    <p class="text-center">Already have an account? <a href="{{route('auth.login')}}">Sign in</a> </p>                                                                 
                 </article>
                 </div> <!-- card.// -->
                 

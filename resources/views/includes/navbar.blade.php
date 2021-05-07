@@ -48,17 +48,17 @@
                         <input type="hidden" id= "currentUser" value="{{Auth::user()->id}}">
                         <a  class="btn btn-secundary" href="{{route('auth.show')}}"  role="button">{{ auth()->user()->name}}</a>
 
-                        <a name="" id="" class="btn text-light bg-azul1" href="{{route('auth.logout')}}" role="button">Salir</a>
+                        <a name="" id="" class="btn text-light bg-azul1" href="{{route('auth.logout')}}" role="button">Exit</a>
                     </h4>
 
                 @endauth
                 @else
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a name="" id="" class="btn btn-secundary" href="{{route('auth.login')}}" role="button">Ingresar</a>
+                        <a name="" id="" class="btn btn-secundary" href="{{route('auth.login')}}" role="button">Sign in</a>
                     </li>
                     <li class="nav-item">
-                        <a name="" id="" class="btn text-light bg-azul1" href="{{route('auth.register')}}" role="button">Registro</a>
+                        <a name="" id="" class="btn text-light bg-azul1" href="{{route('auth.register')}}" role="button">Sign up</a>
                     </li>
                 </ul>
 

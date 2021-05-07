@@ -16,29 +16,29 @@
         <br>
         <div class="row m-3">
         
-            <a name="" class="btn btn-outline-light btn-sm bg-azul1" href="{{route('series.index')}}" role="button">Atrás</a> 
+            <a name="" class="btn btn-outline-light btn-sm bg-azul1" href="{{route('series.index')}}" role="button">Go back</a> 
         </div>
     
         <div class="m-4">
             <br>
-            <h1>Editar Usuario</h1>
+            <h1>Edit User</h1>
             <br>
             <form action="{{route('auth.update-user', ['user' => $user])}}" method = "POST">
                 @csrf
                 @method('PUT')
                     
                     <div class="form-group">
-                        <label for="">Nombre</label>
+                        <label for="">Name</label>
                         <input type="text" class="form-control"  name='name' value="{{$user->name}}"> 
                     </div>
                     <div class="form-group">
-                        <label for="">Correo</label>
+                        <label for="">Email</label>
                         <input class="form-control"  type="email" name='email' value="{{$user->email}}">
                     </div>
             
                 
                 <br>
-                <button type="submit" class="btn btn-outline-light bg-azul1 btn-sm">Editar Usuario</button>
+                <button type="submit" class="btn btn-outline-light bg-azul1 btn-sm">Edit User</button>
             </form>
         </div>
         <br>
@@ -48,17 +48,17 @@
                 @method('PUT')
                 <div>
                     <input type="hidden" name="email" value = "{{$user->email}}">
-                    <h5>Cambiar Contraseña</h5>
+                    <h5>Change Password</h5>
                     <br>
-                    <label for="">Contraseña Actual</label>
+                    <label for="">Old Password </label>
                     <input class="form-control" type="password" name='password' value="">
                     <br>
-                    <label for="">Nueva Contraseña</label>
+                    <label for="">New Password</label>
                     <input class="form-control" type="password" name='password_new' value="">
                     
                 </div>
                 <br>
-                <button type="submit" class="btn btn-outline-light bg-azul1 btn-sm">Cambiar Contraseña</button>
+                <button type="submit" class="btn btn-outline-light bg-azul1 btn-sm">Change Password</button>
             </form>
         </div>
         <br>

@@ -26,30 +26,30 @@
                 </div>
                 <article class="card-body mx-auto" style="max-width: 400px;">
                     
-                    <h4 class="card-title mt-1 text-center">Ingresar</h4>
+                    <h4 class="card-title mt-1 text-center">Sign in</h4>
                     
                     <p>
-                        <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Ingresar via Twitter</a>
-                        <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Ingresar via facebook</a>
+                        <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
+                        <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
                     </p>
                     <form>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                          </div>
-                        <input name="email" class="form-control" placeholder="Correo electronico" type="email">
+                        <input name="email" class="form-control" placeholder="Email" type="email">
                         </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                         </div>
-                        <input class="form-control" placeholder="Contraseña" type="password" name='password'>
+                        <input class="form-control" placeholder="Password" type="password" name='password'>
                     </div> <!-- form-group// -->
                                         
                     <div class="form-group">
-                        <button type="submit" class=" btn text-light bg-azul1 btn-block"> Ingresar  </button>
+                        <button type="submit" class=" btn text-light bg-azul1 btn-block"> Sign in  </button>
                     </div> <!-- form-group// -->      
-                    <p class="text-center">No tienes cuenta? <a href="{{route('auth.register')}}">Crear Cuenta</a> </p>                                                                 
+                    <p class="text-center">Not a member yet? <a href="{{route('auth.register')}}">Create an account</a> </p>                                                                 
                 </article>
                 </div> <!-- card.// -->
                 

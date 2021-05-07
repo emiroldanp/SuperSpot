@@ -120,14 +120,14 @@
                                          @endif
                                     </div>
                                     <div class="row">
-                                        <div class="col" id ="{{$comment->id}}6" style="display:block;">
+                                        <div class="col" id ="{{$comment->id}}-content" style="display:block;">
                                             {{$comment->content}}
                                         </div>  
                                         @if (Auth::user() == $comment->user)
                                         <div class="row">
                                             <div class="col-xs-1-12">
-                                                <button  id="{{$comment->id}}1" class="btn btn-link"   type="submit" style="display:block;" onclick="showDiv({{$comment->id}}, {{$comment->id}}1, {{$comment->id}}2, {{$comment->id}}3)" >Editar</button>
-                                                <button  id="{{$comment->id}}2" class="btn btn-link"   type="submit" style="display:none;"  onclick="sendUpdate({{$comment->id}}4)">Terminar</button>
+                                                <button  id="{{$comment->id}}-edit" class="btn btn-link"   type="submit" style="display:block;" onclick="showDiv({{$comment->id}}, {{$comment->id}}1, {{$comment->id}}2, {{$comment->id}}3)" >Editar</button>
+                                                <button  id="{{$comment->id}}-finish" class="btn btn-link"   type="submit" style="display:none;"  onclick="sendUpdate({{$comment->id}})">Terminar</button>
                                             </div>
                                             <div class="col-xs-1-12">
                                                     <button  class="btn btn-link" type="submit" onclick = "deleteComic({{$comment->id}}, this)">Borrar</button>
@@ -196,8 +196,30 @@
         document.getElementById(id_el3).style.display = "block";
     }
 
-    function sendUpdate(id_el4) {
-        document.getElementById(id_el4).click();
+    function sendUpdate(id) {
+        let description = document.getElementById("exampleFormControlTextarea1").value
+        let str = 'comments/'+id+''
+        console.log(description);
+        $.ajax({
+            url: str,
+            method: 'PUT',
+            headers:{
+                'Accept': 'application/json',
+                'X-CSRF-Token': $('meta[name="csrf-token"').attr('content')
+            },
+            data:{
+                id:id,
+                content:description    
+            }
+        }).done(function(response) {
+            console.log("Exito" , response)
+           
+        })
+        .fail(function(jqXHR, response) {
+            console.log('Fallido', response);
+        });
+        
+
     }
 
     function likeDislike(x) {

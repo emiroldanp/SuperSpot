@@ -92,7 +92,7 @@ class CommentsController extends Controller
         $comment->content = $arr['content'];
         $id_comic =  $comment->id_comic;
         $comment -> save();
-        return redirect()->route('series.show', $id_comic);
+        return response()->json($comment);
     }
 
     /**

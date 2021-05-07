@@ -126,8 +126,8 @@
                                         @if (Auth::user() == $comment->user)
                                         <div class="row">
                                             <div class="col-xs-1-12">
-                                                <button  id="{{$comment->id}}-edit" class="btn btn-link"   type="submit" style="display:block;" onclick="showDiv({{$comment->id}}, {{$comment->id}}1, {{$comment->id}}2, {{$comment->id}}3)" >Editar</button>
-                                                <button  id="{{$comment->id}}-finish" class="btn btn-link"   type="submit" style="display:none;"  onclick="sendUpdate({{$comment->id}})">Terminar</button>
+                                                <button  id="{{$comment->id}}1" class="btn btn-link"   type="submit" style="display:block;" onclick="showDiv({{$comment->id}}, {{$comment->id}}1, {{$comment->id}}2, {{$comment->id}}3)" >Editar</button>
+                                                <button  id="{{$comment->id}}2" class="btn btn-link"   type="submit" style="display:none;"  onclick="sendUpdate({{$comment->id}})">Terminar</button>
                                             </div>
                                             <div class="col-xs-1-12">
                                                     <button  class="btn btn-link" type="submit" onclick = "deleteComic({{$comment->id}}, this)">Borrar</button>
@@ -136,16 +136,11 @@
                                         @endif
                                         
                                     </div>   
-                                    <form action="{{route('comments.update', $comment -> id)}}" method = "POST">
-                                                @csrf
-                                                @method('PUT')
-                                                
-                                                <div class="form-group" id ="{{$comment->id}}3" style="display:none;">
-                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="{{$comment->content}} " type="text" name='content' value='{{$comment->content}}'></textarea>
-                                                </div>  
+                                        <div class="form-group" id ="{{$comment->id}}3" style="display:none;">
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="{{$comment->content}} " type="text" name='content' value='{{$comment->content}}'></textarea>
+                                        </div>  
 
-                                                <button  id="{{$comment->id}}" class="btn btn-link"   type="submit" style="display:none;"></button>
-                                    </form> 
+                                        <button  id="{{$comment->id}}" class="btn btn-link"   type="submit" style="display:none;"></button>
                                 </td>
                             </tr>
                             @endforeach
@@ -213,6 +208,7 @@
             }
         }).done(function(response) {
             console.log("Exito" , response)
+            document.getElementById(response.id+"-content").innerHTML =  response.content;
            
         })
         .fail(function(jqXHR, response) {

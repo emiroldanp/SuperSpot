@@ -14,7 +14,7 @@
         
         <br>
         <div class="row m-2">
-            <a name="" class="btn btn-outline-light bg-azul1 btn-sm" href="{{route('series.index')}}" role="button">Atrás</a> 
+            <a name="" class="btn btn-outline-light bg-azul1 btn-sm" href="{{route('series.index')}}" role="button">Back</a> 
         </div>
         <br>
         <div class="row m-4">
@@ -126,11 +126,11 @@
                                         @if (Auth::user() == $comment->user)
                                         <div class="row">
                                             <div class="col-xs-1-12">
-                                                <button  id="{{$comment->id}}1" class="btn btn-link"   type="submit" style="display:block;" onclick="showDiv({{$comment->id}}, {{$comment->id}}1, {{$comment->id}}2, {{$comment->id}}3)" >Editar</button>
-                                                <button  id="{{$comment->id}}2" class="btn btn-link"   type="submit" style="display:none;"  onclick="sendUpdate({{$comment->id}})">Terminar</button>
+                                                <button  id="{{$comment->id}}1" class="btn btn-link"   type="submit" style="display:block;" onclick="showDiv({{$comment->id}}, {{$comment->id}}1, {{$comment->id}}2, {{$comment->id}}3)" >Edit</button>
+                                                <button  id="{{$comment->id}}2" class="btn btn-link"   type="submit" style="display:none;"  onclick="sendUpdate({{$comment->id}})">Update</button>
                                             </div>
                                             <div class="col-xs-1-12">
-                                                    <button  class="btn btn-link" type="submit" onclick = "deleteComic({{$comment->id}}, this)">Borrar</button>
+                                                    <button  class="btn btn-link" type="submit" onclick = "deleteComic({{$comment->id}}, this)">Delete</button>
                                             </div>
                                         </div>
                                         @endif
@@ -152,14 +152,14 @@
                     <div>
                         <div class="row">
                             <div class="col">
-                                <input id = "description_comment" class = "form-control" type="text" name='content' placeholder="Apoya a otros con un comentario">
+                                <input id = "description_comment" class = "form-control" type="text" name='content' placeholder="">
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col">
                                 <input id="id_comic" type="hidden" name='id_serie' value= {{$serie["id"]}}>
-                                <input class = "btn btn-primary bg-rojo1"  value = 'Subir Comentario' onclick= createCommentAjax()>
+                                <input class = "btn btn-primary bg-rojo1"  value = 'Send' onclick= createCommentAjax()>
                             </div>  
                         </div>
                     </div>
@@ -209,6 +209,9 @@
         }).done(function(response) {
             console.log("Exito" , response)
             document.getElementById(response.id+"-content").innerHTML =  response.content;
+            document.getElementById("exampleFormControlTextarea1").style.display = "none"
+            document.getElementById(response.id+"2").style.display = "none"
+            document.getElementById(response.id+"1").style.display = "block"
            
         })
         .fail(function(jqXHR, response) {
@@ -240,7 +243,7 @@
         })
         .done(function(response) {
             console.log('Éxitoso',response);
-            $("#tableComments").append('<tr id= tableRow'+ response.id +'><td><div class="row"><div class="col">'+response.user.name+'</div><div class="col-xs-1-12"><button  id="'+response.id+'1" class="btn btn-link"   type="submit" style="display:block;" onclick="showDiv('+response.id+', '+response.id+'1, '+response.id+'2, '+response.id+'3)" >Editar</button><button  id="'+response.id+'2" class="btn btn-link"   type="submit" style="display:none;"  onclick="sendUpdate('+response.id+'4)">Terminar</button></div><div class="col-xs-1-12"><button  class="btn btn-link" type="submit" onclick = deleteComic('+response.id+',this)>Borrar</button></div></div><div class="row"><div class="col" id ="'+response.id+'6" style="display:block;">'+response.content+'</div></div><form action="{{route("comments.update", '+response.id+')}}" method = "POST">@csrf @method("PUT")<div class="form-group" id ="'+response.id+'3" style="display:none;"><textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="'+response.content+'" type="text" name="content" value='+response.content+'></textarea></div><button  id="'+response.id+'" class="btn btn-link"   type="submit" style="display:none;"></button></form></td></tr>')
+            $("#tableComments").append('<tr id= tableRow'+ response.id +'><td><div class="row"><div class="col">'+response.user.name+'</div><div class="col-xs-1-12"></div><div class="col-xs-1-12"><button  class="btn btn-link" type="submit" onclick = deleteComic('+response.id+',this)>Delete</button></div></div><div class="row"><div class="col" id ="'+response.id+'-content" style="display:block;">'+response.content+'</div></div></td></tr>')
                         
             
         })

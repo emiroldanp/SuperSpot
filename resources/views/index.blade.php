@@ -48,8 +48,23 @@
               </a>
             </div>
 
-     
-       
+     <br>
+     <div class="row">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Popular</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">New Release</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Alphabetical order</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Top 100</a>
+            </li>
+          </ul>
+     </div>  
     <div class="jumbotron" style="max-height: 50px">
         <h1>Comics</h1>
 

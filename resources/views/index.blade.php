@@ -65,10 +65,7 @@
             </li>
           </ul>
      </div>  
-    <div class="jumbotron" style="max-height: 50px">
-        <h1>Comics</h1>
-
-    </div>
+    
     <div class="container">
             <div class="row mt-5" style="margin: 0 auto">
                 @foreach($series["results"] as $item)

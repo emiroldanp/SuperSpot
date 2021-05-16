@@ -6,6 +6,7 @@ use App\Events\CommentsEvent;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\GoogleController;
 
 
 /*
@@ -83,3 +84,6 @@ Route::get('/auth/callback', function () {
     return redirect()->route('series.index');
 
 });
+
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);

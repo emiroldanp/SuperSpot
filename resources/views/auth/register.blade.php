@@ -15,7 +15,7 @@
 
 </head>
 <body class = "image">
-    
+
     <div class = "container">
         <form action="{{route('auth.do-register')}}" method="POST">
             @csrf
@@ -25,10 +25,10 @@
                 </div>
                 <article class="card-body mx-auto" style="max-width: 400px;">
                     <h4 class="card-title mt-1 text-center">Create an Account</h4>
-                    
+
                     <p>
-                        <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
-                        <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
+                        <a href="/auth/redirect" class="btn btn-block btn-twitter"> <i class="fab fa-github"></i>   Login via Github</a>
+                        <a href="{{ url('auth/google') }}" class="btn btn-block btn-facebook"> <i class="fab fa-google"></i>   Login via Google</a>
                     </p>
                     <form>
                     <div class="form-group input-group">
@@ -54,20 +54,20 @@
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                         </div>
                         <input class="form-control" placeholder="Confirm Password" type="password" name='password_confirmation'>
-                    </div> <!-- form-group// -->                                      
+                    </div> <!-- form-group// -->
                     <div class="form-group">
                         <button type="submit" class="btn text-light bg-azul1 btn-block"> Create  </button>
-                    </div> <!-- form-group// -->      
-                    <p class="text-center">Already have an account? <a href="{{route('auth.login')}}">Sign in</a> </p>                                                                 
+                    </div> <!-- form-group// -->
+                    <p class="text-center">Already have an account? <a href="{{route('auth.login')}}">Sign in</a> </p>
                 </article>
                 </div> <!-- card.// -->
-                
-                </div> 
-            
+
+                </div>
+
         </form>
     </div>
-   
-      
+
+
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -115,8 +115,8 @@
     .bg-azul2{
         background-color: #1E2639 !important;
     }
-    
-   
-   
+
+
+
 </style>
 </html>

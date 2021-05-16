@@ -15,9 +15,9 @@
 
 </head>
 <body class = "image">
-    
+
     <div class = "container">
-        
+
         <form action="{{route('auth.do-login')}}" method="POST">
             @csrf
             <div class="card bg-light">
@@ -25,12 +25,12 @@
                     <a class="rojo3 " href="{{route('series.index')}}" style="font-family: Shaka Pow; font-size:3vw">Comicwire</a>
                 </div>
                 <article class="card-body mx-auto" style="max-width: 400px;">
-                    
+
                     <h4 class="card-title mt-1 text-center">Sign in</h4>
-                    
+
                     <p>
-                        <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
-                        <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
+                        <a href="/auth/redirect" class="btn btn-block btn-twitter"> <i class="fab fa-github"></i>   Login via Github</a>
+                        <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via Facebook</a>
                     </p>
                     <form>
                     <div class="form-group input-group">
@@ -45,20 +45,20 @@
                         </div>
                         <input class="form-control" placeholder="Password" type="password" name='password'>
                     </div> <!-- form-group// -->
-                                        
+
                     <div class="form-group">
                         <button type="submit" class=" btn text-light bg-azul1 btn-block"> Sign in  </button>
-                    </div> <!-- form-group// -->      
-                    <p class="text-center">Not a member yet? <a href="{{route('auth.register')}}">Create an account</a> </p>                                                                 
+                    </div> <!-- form-group// -->
+                    <p class="text-center">Not a member yet? <a href="{{route('auth.register')}}">Create an account</a> </p>
                 </article>
                 </div> <!-- card.// -->
-                
-                </div> 
-            
+
+                </div>
+
         </form>
     </div>
-   
-      
+
+
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -106,8 +106,8 @@
     .bg-azul2{
         background-color: #1E2639 !important;
     }
-    
-   
-   
+
+
+
 </style>
 </html>

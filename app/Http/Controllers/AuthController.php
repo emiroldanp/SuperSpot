@@ -25,7 +25,7 @@ class AuthController extends Controller
         ])->validate();
 
         $data['password'] = Hash::make($data['password']);
-    
+
         User::create($data);
         return redirect()->route('auth.login');
     }
@@ -33,7 +33,7 @@ class AuthController extends Controller
     public function login(Request $req){
         return view('auth.login');
     }
-    
+
     public function doLogin(Request $req){
         $credentials = $req->only('email', 'password');
         if(Auth::attempt($credentials)){
@@ -65,10 +65,10 @@ class AuthController extends Controller
         }catch (\Throwable $t){
             redirect()->route('series.index');
         }
-       
+
     }
     public function updateUser(Request $request){
-        
+
         $user = Auth::user();
         $arr = $request->input();
         $user->name = $arr['name'];
@@ -90,9 +90,8 @@ class AuthController extends Controller
             $user->save();
             return redirect()->route('auth.show');
         }
-      
+
         return redirect()->route('auth.show');
     }
 
-        
 }

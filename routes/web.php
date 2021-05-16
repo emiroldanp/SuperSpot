@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Events\CommentsEvent;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -53,3 +57,29 @@ Route::get('show', 'App\Http\Controllers\AuthController@show')->name('auth.show'
 Route::any('updateUser', 'App\Http\Controllers\AuthController@updateUser')->name('auth.update-user');
 Route::any('updatePassword', 'App\Http\Controllers\AuthController@updatePassword')->name('auth.update-password');
 
+//Laravel Socialite
+Route::get('/auth/redirect', function () {
+    return Socialite::driver('github')->redirect();
+});
+
+Route::get('/auth/callback', function () {
+
+    $githubUser = Socialite::driver('github')->user();
+
+    $user = User::where('provider_id', $githubUser->getId())->first();
+
+    if(!$user) {
+        // add user to database
+        $user = User::create([
+            'email' => $githubUser->getEmail(),
+            'name' => $githubUser->getName(),
+            'provider_id'=> $githubUser->getId(),
+            'provider' => 'github'
+        ]);
+    }
+    // login the user
+    Auth::login($user, true);
+
+    return redirect()->route('series.index');
+
+});

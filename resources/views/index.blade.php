@@ -26,7 +26,7 @@
             <div class="carousel-inner" style=" width:100%;">
                 @foreach ($news as $item)
                     <div class="carousel-item justify-content-center">
-                        <a href="{{$item["url"]}}">
+                        <a href="{{$item["url"]}}" target="_blank">
                          <img class="d-block w-100" src={{$item["urlToImage"]}} alt="Second slide" height="400" >
                         </a>
                         <div class="carousel-caption d-none d-md-block">
@@ -50,34 +50,52 @@
 
      <br>
      <div class="row">
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Popular</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">New Release</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Alphabetical order</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Top 100</a>
-            </li>
-          </ul>
+         <div class="col-8">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <form action="series" method="GET">
+                        @csrf('GET')
+                        <button class="nav-link" type = "submit">Comics</button>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <form action="alphabetically" method="GET">
+                        @csrf('GET')
+                        <button class="nav-link" type = "submit">Alphabetical order</button>
+                    </form>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Top 100</a>
+                </li>
+            </ul>
+         </div>
+        
+          <div class="col-4">
+            <div class="input-group rounded">
+                <input type="search" class="form-control rounded" placeholder="Search character" aria-label="Search"
+                  aria-describedby="search-addon" />
+                <span class="input-group-text border-0" id="search-addon">
+                  <i class="fas fa-search"></i>
+                </span>
+              </div>
+          </div>
+          
      </div>  
     
     <div class="container">
-            <div class="row mt-5" style="margin: 0 auto">
+            <div id = "cardContainer" class="row mt-5" style="margin: 0 auto">
                 @foreach($series["results"] as $item)
                 <div class="col-md-4 col-lg-3 mb-3 d-flex justify-content-center">
                     <div class="card-deck">
                             <div class="card" style="width: 12rem;">
+                                
                                 @if (count($item["images"]) > 0)
                                     <img class="card-img-top img-thumbnail" src="{{$item["images"][0]["path"]}}/portrait_incredible.jpg" alt="Card image cap" style="max-width: 200px; max-height:300px;">
+                                @else
+                                    <img class="card-img-top img-thumbnail" src="images/comic.jpg" alt="Card image cap" style="max-width: 200px; max-height:300px;">
                                 @endif
                                 <div class="card-body">
-                                    <a class="card-title" href="{{route('series.show', $item["id"])}}">{{$item["title"]}}</a>
-                                    
+                                    <a class="card-title" href="{{route('series.show', $item["id"])}}">{{$item["title"]}}</a>   
                                 </div>
                             </div>
 
@@ -98,6 +116,7 @@
         $('#carouselExampleControls').find('.carousel-item').first().addClass('active');
     });
 
+  
 </script>
 
 </html>

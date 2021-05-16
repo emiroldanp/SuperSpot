@@ -31,8 +31,9 @@ Route::put('/series/comments/dislikes/{id}', 'App\Http\Controllers\CommentsContr
 //Ruta al controlador de las Comics
 Route::resource('comics', 'App\Http\Controllers\ComicsController');
 
-//Ruta al controlador de las Series
+//Ruta al controlador de las SeriesPauth
 Route::resource('series', 'App\Http\Controllers\SeriesController');
+Route::get('alphabetically', 'App\Http\Controllers\SeriesController@alphabetically');
 
 //Ruta al controlador del Usuario
 Route::resource('user', 'App\Http\Controllers\UsersController');

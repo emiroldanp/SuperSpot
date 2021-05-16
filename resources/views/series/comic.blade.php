@@ -22,24 +22,35 @@
                 <h1>{{$serie["title"]}}</h1>
             </div>
             
-            
         </div>
         <br>
         <div class = "row m-4">
             <div class="col-3">
                 @if (count($serie["images"]) > 0)
                     <img class="card-img-top img-thumbnail" src="{{$serie["images"][0]["path"]}}/portrait_xlarge.jpg" alt="Card image cap" style="max-width: 200px; max-height:300px;">
+                @else
+                    <img class="card-img-top img-thumbnail" src="../images/comic.jpg" alt="Card image cap" style="max-width: 200px; max-height:300px;"> 
                 @endif
             </div>
             <div class="col-5">
                 <h4>Description</h4>
                 <p>
-                    {{$serie["description"]}}
+                    @if ( $serie["description"] == "")
+                        No description available
+                    @else
+                        {{$serie["description"]}}
+                    @endif
+                   
                 </p>
             </div>
             <div class="col-2">
                 <div class="row">
-                    <div class="p-3 border text-dark bg-gris1">Issue Number {{$serie["issueNumber"]}}</div>
+                    @if ( $serie["issueNumber"] == "")
+                        <div class="p-3 border text-dark bg-gris1">No issue number available</div>
+                    @else
+                        <div class="p-3 border text-dark bg-gris1">Issue Number {{$serie["issueNumber"]}}</div>
+                    @endif
+                   
                     
                 </div>  
                 <br> 
@@ -47,9 +58,14 @@
                     <div class="p-3 border text-dark bg-gris1">
                         Creators
                         <br>
-                        @foreach ($serie["creators"]["items"] as $item)
-                        {{$item["name"]}} 
-                        @endforeach
+                        @if ( count($serie["creators"]["items"]) == 0)
+                            No creators available
+                        @else
+                            @foreach ($serie["creators"]["items"] as $item)
+                            {{$item["name"]}} 
+                            @endforeach
+                        @endif
+                       
                         
                     </div>
                 </div>                     

@@ -40,6 +40,7 @@ Route::resource('comics', 'App\Http\Controllers\ComicsController');
 Route::resource('series', 'App\Http\Controllers\SeriesController');
 Route::get('alphabetically', 'App\Http\Controllers\SeriesController@alphabetically');
 Route::get('character', 'App\Http\Controllers\SeriesController@character');
+Route::get('upcoming', 'App\Http\Controllers\SeriesController@upComing');
 
 //Ruta al controlador del Usuario
 Route::resource('user', 'App\Http\Controllers\UsersController');

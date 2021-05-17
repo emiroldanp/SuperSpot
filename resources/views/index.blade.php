@@ -71,13 +71,18 @@
          </div>
         
           <div class="col-4">
-            <div class="input-group rounded">
-                <input type="search" class="form-control rounded" placeholder="Search character" aria-label="Search"
-                  aria-describedby="search-addon" />
-                <span class="input-group-text border-0" id="search-addon">
-                  <i class="fas fa-search"></i>
-                </span>
-              </div>
+            <form action="character" method="GET">
+                @csrf('GET')
+                <div class="input-group rounded">
+                    <input type="text" name="name" class="form-control rounded" placeholder="Search character" aria-label="Search"
+                    aria-describedby="search-addon" required/>
+                    <span class="input-group-text border-0" id="search-addon">
+                        <button name="" id="" class="btn btn-secundary" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
           </div>
           
      </div>  

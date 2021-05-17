@@ -40,6 +40,17 @@ class SeriesController extends Controller
         
         return view('index', ['user' => $user])->with("series",$response)->with("news", $news["articles"]);
     }
+    public function character(Request $request, User $user){
+
+        $arr = $request->input();
+        $current_date_time = Carbon::now()->toDateTimeString();
+        $hash = md5($current_date_time .'029df42137a1ad8105bcf66a208bc081efbf4559abae7768139eb68365c998fc37636a75');
+        $id_character = Http::get('https://gateway.marvel.com:443/v1/public/characters?name='.$arr['name'].'&ts='. $current_date_time . '&apikey=abae7768139eb68365c998fc37636a75&hash='. $hash)['data']['results'][0]['id'];
+        $response = Http::get('https://gateway.marvel.com:443/v1/public/characters/'.$id_character.'/comics?&limit=100&ts='. $current_date_time . '&apikey=abae7768139eb68365c998fc37636a75&hash='. $hash)['data'];
+        $news = Http::get('https://newsapi.org/v2/everything?q=marvel&sortBy=relevancy&language=en&page=1&apiKey=4bbe98577e3c479b86a2691323a56896');
+        
+        return view('index', ['user' => $user])->with("series",$response)->with("news", $news["articles"]);
+    }
 
     /**
      * Show the form for creating a new resource.

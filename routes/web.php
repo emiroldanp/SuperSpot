@@ -39,6 +39,7 @@ Route::resource('comics', 'App\Http\Controllers\ComicsController');
 //Ruta al controlador de las SeriesPauth
 Route::resource('series', 'App\Http\Controllers\SeriesController');
 Route::get('alphabetically', 'App\Http\Controllers\SeriesController@alphabetically');
+Route::get('character', 'App\Http\Controllers\SeriesController@character');
 
 //Ruta al controlador del Usuario
 Route::resource('user', 'App\Http\Controllers\UsersController');

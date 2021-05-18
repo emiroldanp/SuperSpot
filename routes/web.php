@@ -30,8 +30,8 @@ Route::get('/series/event/{comment}/{id_escritor}/{id_usuario}', function($comme
 
 //Ruta al controlador de las Commentarios
 Route::resource('/series/comments', 'App\Http\Controllers\CommentsController');
-Route::put('/series/comments/likes/{id}', 'App\Http\Controllers\CommentsController@updateLikes');
-Route::put('/series/comments/dislikes/{id}', 'App\Http\Controllers\CommentsController@updateDislikes');
+Route::put('/series/comments/likes/{id}/{user}', 'App\Http\Controllers\CommentsController@updateLikes');
+Route::put('/series/comments/dislikes/{id}/{user}', 'App\Http\Controllers\CommentsController@updateDislikes');
 
 //Ruta al controlador de las Comics
 Route::resource('comics', 'App\Http\Controllers\ComicsController');

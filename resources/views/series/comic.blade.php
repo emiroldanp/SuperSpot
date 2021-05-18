@@ -96,11 +96,11 @@
                                         <div class="row">
                                             <div class="col" style="margin-right:7px;">
                                                 <i class="fa fa-thumbs-up"></i>
-                                                <p id = "likes{{$comment->id}}">{{$comment->likes}}</p>
+                                                <p id = "likes{{$comment->id}}">{{$total_likes[$comment->id]}}</p>
                                             </div>
                                             <div class="col">
                                                 <i  class="fa fa-thumbs-down"></i>
-                                                <p id = "dislikes{{$comment->id}}">{{$comment->dislikes}}</p>
+                                                <p id = "dislikes{{$comment->id}}">{{$total_dislikes[$comment->id]}}</p>
                                             </div>
                                             
                                             
@@ -111,11 +111,11 @@
                                         <div class="row">
                                             <div class="col" style="margin-right:7px;">
                                                 <i onclick=updateLikes({{$comment->id}},{{Auth::user()->id}}) class="fa fa-thumbs-up"></i>
-                                                <p id = "likes{{$comment->id}}">{{$comment->likes}}</p>
+                                                <p id = "likes{{$comment->id}}">{{$total_likes[$comment->id]}}</p>
                                             </div>
                                             <div class="col">
                                                 <i onclick=updateDislikes({{$comment->id}},{{Auth::user()->id}}) class="fa fa-thumbs-down"></i>
-                                                <p id = "dislikes{{$comment->id}}">{{$comment->dislikes}}</p>
+                                                <p id = "dislikes{{$comment->id}}">{{$total_dislikes[$comment->id]}}</p>
                                             </div>
                                             
                                             
@@ -124,11 +124,11 @@
                                         <div class="row ">
                                             <div class="col-xs-1-12" style="margin-right:7px;">
                                                 <i class="fa fa-thumbs-up"></i>
-                                                <p id = "likes{{$comment->id}}">{{$comment->likes}}</p>
+                                                <p id = "likes{{$comment->id}}">{{$total_likes[$comment->id]}}</p>
                                             </div>
                                             <div class="col-xs-1-12">
                                                 <i class="fa fa-thumbs-down"></i>
-                                                <p id = "dislikes{{$comment->id}}">{{$comment->dislikes}}</p>
+                                                <p id = "dislikes{{$comment->id}}">{{$total_dislikes[$comment->id]}}</p>
                                             </div>
                                             
                                             

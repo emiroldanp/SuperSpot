@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use App\Models\LikesDislike;
 use App\Models\Serie;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use DB;
 
 class CommentsController extends Controller
 {
@@ -109,17 +111,52 @@ class CommentsController extends Controller
        
     }
 
-    public function updateLikes($id){
-        $comment = Comment::find($id);
-        $comment->likes = $comment->likes + 1;
-        $comment -> save();
-        return response()->json($comment);
+    public function updateLikes($id, $user){
+        if (count(DB::table('likes_dislikes')->where('comment_id', $id)->where('user_id', $user)->get()) == 0) {
+            $like = new LikesDislike;
+            $comment = Comment::find($id);
+            $like->user()->associate(Auth::user());
+            $like->comment()->associate($comment);
+            $like->likedislike = true;
+            $like->save();
+        } 
+        else {
+            #
+            $like = LikesDislike::where('comment_id', $id)->where('user_id', $user)->first();
+            $like->likedislike = true;
+            $like->save();
+        }
+       
+        $total['likes'] =DB::table('likes_dislikes')->where('comment_id', $id)->where('likedislike', true)->count();
+        $total['dislikes'] =DB::table('likes_dislikes')->where('comment_id', $id)->where('likedislike', false)->count();
+        $total['id'] = $id;
+        $total['user_id'] = Comment::find($id)->user_id;
+        return response()->json($total);
     }
 
-    public function updateDislikes($id){
-        $comment = Comment::find($id);
-        $comment->dislikes = $comment->dislikes + 1;
-        $comment -> save();
-        return response()->json($comment);
+    public function updateDislikes($id, $user){
+
+        if (count(DB::table('likes_dislikes')->where('comment_id', $id)->where('user_id', $user)->get()) == 0) {
+            $dislike = new LikesDislike;
+            $comment = Comment::find($id);
+            $dislike->user()->associate(Auth::user());
+            $dislike->comment()->associate($comment);
+            $dislike->likedislike = false;
+            $dislike->save();
+        } 
+        else {
+            #
+            $dislike = LikesDislike::where('comment_id', $id)->where('user_id', $user)->first();
+            
+            $dislike->likedislike = false;
+            $dislike->save();
+        }
+        
+        
+        $total['likes'] =DB::table('likes_dislikes')->where('comment_id', $id)->where('likedislike', true)->count();
+        $total['dislikes'] =DB::table('likes_dislikes')->where('comment_id', $id)->where('likedislike', false)->count();
+        $total['id'] = $id;
+        $total['user_id'] = $user;
+        return response()->json($total);
     }
 }

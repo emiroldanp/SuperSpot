@@ -20,7 +20,7 @@
     }
     function updateLikes(id, current_user){
         let status = "true"
-        let str = 'comments/likes/'+id+''
+        let str = 'comments/likes/'+id+'/'+current_user
         console.log(str);
         $.ajax({
             url: str,
@@ -34,8 +34,9 @@
                 status:status
             }
         }).done(function(response) {
-            console.log("Exito", current_user)
+            console.log("Exito", response)
             document.getElementById("likes"+response.id).innerHTML = response.likes
+            document.getElementById("dislikes"+response.id).innerHTML = response.dislikes
             updateEvent(response.id, response.user_id, current_user)
         })
         .fail(function(jqXHR, response) {
@@ -45,7 +46,7 @@
     }
     function updateDislikes(id, current_user){
         let status = "true"
-        let str = 'comments/dislikes/'+id+''
+        let str = 'comments/dislikes/'+id+'/'+current_user
         console.log(str);
         $.ajax({
             url: str,
@@ -59,9 +60,19 @@
                 status:status
             }
         }).done(function(response) {
-            console.log("Exito")
+            console.log("Exito", response.dislikes)
+            
+            if (document.getElementById("likes"+response.id).innerHTML != response.likes) {
+                updateEvent(response.id, response.user_id, current_user)
+            }
+            if ( document.getElementById("dislikes"+response.id).innerHTML != response.dislikes) {
+                
+            }
+
+            document.getElementById("likes"+response.id).innerHTML = response.likes
             document.getElementById("dislikes"+response.id).innerHTML = response.dislikes
             updateEvent(response.id, response.user_id, current_user)
+            
         })
         .fail(function(jqXHR, response) {
             console.log('Fallido', response);
@@ -80,7 +91,7 @@
                 'X-CSRF-Token': $('meta[name="csrf-token"').attr('content')
             }
         }).done(function(response) {
-            console.log( "Exito");
+            console.log( "Exito", response);
 
         })
         .fail(function(jqXHR, response) {

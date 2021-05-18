@@ -8,7 +8,7 @@ use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
-
+use DB;
 
 class SeriesController extends Controller
 {
@@ -109,8 +109,17 @@ class SeriesController extends Controller
         
      
         $comments = Comment::where("id_comic","=", $id)->get();
+
+        $total_likes = [];
+        $total_dislikes = [];
+        foreach ($comments as $key => $value) {
+            $total_likes [$value->id] = DB::table('likes_dislikes')->where('comment_id', $value->id)->where('likedislike', true)->count();
+            $total_dislikes[$value->id] = DB::table('likes_dislikes')->where('comment_id', $value->id)->where('likedislike', false)->count();
+        }
+
+        //dd($total_likes, $total_dislikes);
         
-        return view('series.comic', ['comments'=>$comments])->with("serie",$response["results"][0]);
+        return view('series.comic', ['comments'=>$comments])->with("serie",$response["results"][0])->with("total_likes", $total_likes)->with("total_dislikes", $total_dislikes);
         
        
     }

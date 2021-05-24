@@ -2,6 +2,16 @@
 
 @extends('layouts.main')
 
+<style>
+    svg{
+        width: 5vw !important;
+    }
+
+    .flex.justify-between.flex-1{
+        display: none !important;
+    }
+</style>
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -99,7 +109,7 @@
     
     <div class="container">
             <div id = "cardContainer" class="row mt-5" style="margin: 0 auto">
-                @foreach($series["results"] as $item)
+                @foreach($series as $item)
                 <div class="col-md-4 col-lg-3 mb-3 d-flex justify-content-center">
                     <div class="card-deck">
                             <div class="card" style="width: 12rem;">
@@ -118,6 +128,10 @@
                 </div>
                 @endforeach
             </div>
+            <div class="text-center mt-5">
+                {{ $series->links() }}
+            </div>
+            
     </div>
 
     <footer>

@@ -31,15 +31,15 @@ return [
     ],
 
     'github' => [
-        'client_id' => 'ece53358dc86164150d8',
-        'client_secret' => '7d507908218cb6480fa5b49d8af491bef18ec455',
-        'redirect' => 'http://127.0.0.1:8000/auth/callback',
+        'client_id' => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
+        'redirect' => '/auth/callback',
     ],
 
     'google' => [
-        'client_id' => '614293679018-srn1ndtdr5ip1eju4jd0228c0414qg2f.apps.googleusercontent.com',
-        'client_secret' => 'GV6T9xPN4DhPO1t-7cG2a29c',
-        'redirect' => 'http://127.0.0.1:8000/auth/google/callback',
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => '/auth/google/callback',
     ],
 
 ];

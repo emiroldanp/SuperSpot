@@ -1087,10 +1087,6 @@
                 "laravel",
                 "oauth"
             ],
-            "support": {
-                "issues": "https://github.com/laravel/socialite/issues",
-                "source": "https://github.com/laravel/socialite"
-            },
             "time": "2021-04-06T14:38:16+00:00"
         },
         {
@@ -1482,10 +1478,6 @@
                 "tumblr",
                 "twitter"
             ],
-            "support": {
-                "issues": "https://github.com/thephpleague/oauth1-client/issues",
-                "source": "https://github.com/thephpleague/oauth1-client/tree/v1.9.0"
-            },
             "time": "2021-01-20T01:40:53+00:00"
         },
         {
@@ -2436,10 +2428,6 @@
                 "rest",
                 "trigger"
             ],
-            "support": {
-                "issues": "https://github.com/pusher/pusher-http-php/issues",
-                "source": "https://github.com/pusher/pusher-http-php/tree/6.1.0"
-            },
             "time": "2021-03-24T08:23:36+00:00"
         },
         {
@@ -7676,6 +7664,5 @@
     "platform": {
         "php": "^7.3|^8.0"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "platform-dev": []
 }

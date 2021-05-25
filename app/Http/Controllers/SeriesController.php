@@ -45,7 +45,7 @@ class SeriesController extends Controller
         $response = Http::get('https://gateway.marvel.com:443/v1/public/comics?orderBy=title&limit=100&ts='. $current_date_time . '&apikey=abae7768139eb68365c998fc37636a75&hash='. $hash)['data'];
         $dataResponse = $this->paginate($response['results']);
         $news = Http::get('https://newsapi.org/v2/everything?q=marvel&sortBy=relevancy&language=en&page=1&apiKey=4bbe98577e3c479b86a2691323a56896');
-        
+        $dataResponse->withPath('/alphabetically');
         return view('index', ['user' => $user])->with("series",$dataResponse)->with("news", $news["articles"])->with("fail", $failSearch);
     }
     public function upComing(User $user){
@@ -54,6 +54,7 @@ class SeriesController extends Controller
         $hash = md5($current_date_time .'029df42137a1ad8105bcf66a208bc081efbf4559abae7768139eb68365c998fc37636a75');
         $response = Http::get('https://gateway.marvel.com:443/v1/public/comics?dateDescriptor=nextWeek&limit=100&ts='. $current_date_time . '&apikey=abae7768139eb68365c998fc37636a75&hash='. $hash)['data'];
         $dataResponse = $this->paginate($response['results']);
+        $dataResponse->withPath('/upComing');
         $news = Http::get('https://newsapi.org/v2/everything?q=marvel&sortBy=relevancy&language=en&page=1&apiKey=4bbe98577e3c479b86a2691323a56896');
         
         return view('index', ['user' => $user])->with("series",$dataResponse)->with("news", $news["articles"])->with("fail", $failSearch);
@@ -69,7 +70,8 @@ class SeriesController extends Controller
             $failSearch = false;
             $id_character = Http::get('https://gateway.marvel.com:443/v1/public/characters?name='.$arr['name'].'&ts='. $current_date_time . '&apikey=abae7768139eb68365c998fc37636a75&hash='. $hash)['data']['results'][0]['id'];
             $response = Http::get('https://gateway.marvel.com:443/v1/public/characters/'.$id_character.'/comics?&limit=100&ts='. $current_date_time . '&apikey=abae7768139eb68365c998fc37636a75&hash='. $hash)['data'];
-            $dataResponse = $this->paginate($response['results']);
+            $dataResponse = $this->paginate($response['results'])->withQueryString();
+            $dataResponse->withPath('/character');
             return view('index', ['user' => $user])->with("series",$dataResponse)->with("news", $news["articles"])->with("fail", $failSearch);
         }
         else{

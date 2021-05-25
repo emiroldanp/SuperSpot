@@ -30,7 +30,6 @@
 
                     <p>
                         <a href="/auth/redirect" class="btn btn-block btn-twitter"> <i class="fab fa-github"></i>   Login via Github</a>
-                        <a href="{{ url('auth/google') }}" class="btn btn-block btn-facebook"> <i class="fab fa-google"></i>   Login via Google</a>
                     </p>
                     <form>
                     <div class="form-group input-group">

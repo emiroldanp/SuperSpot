@@ -62,16 +62,10 @@
         }).done(function(response) {
             console.log("Exito", response.dislikes)
             
-            if (document.getElementById("likes"+response.id).innerHTML != response.likes) {
-                updateEvent(response.id, response.user_id, current_user)
-            }
-            if ( document.getElementById("dislikes"+response.id).innerHTML != response.dislikes) {
-                
-            }
 
             document.getElementById("likes"+response.id).innerHTML = response.likes
             document.getElementById("dislikes"+response.id).innerHTML = response.dislikes
-            updateEvent(response.id, response.user_id, current_user)
+            
             
         })
         .fail(function(jqXHR, response) {

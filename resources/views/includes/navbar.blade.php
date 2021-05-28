@@ -44,12 +44,22 @@
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavId">
                 @if (Auth::check())
                 @auth
+                    @if (Auth::user()->password !=null)
                     <h4>
                         <input type="hidden" id= "currentUser" value="{{Auth::user()->id}}">
                         <a  class="btn btn-secundary" href="{{route('auth.show')}}"  role="button">{{ auth()->user()->name}}</a>
 
                         <a name="" id="" class="btn text-light bg-azul1" href="{{route('auth.logout')}}" role="button">Exit</a>
                     </h4>
+                    @else
+                    <h4>
+                        
+                        <a  class="btn btn-secundary" >{{ auth()->user()->name}}</a>
+
+                        <a name="" id="" class="btn text-light bg-azul1" href="{{route('auth.logout')}}" role="button">Exit</a>
+                    </h4>
+                    @endif
+                    
 
                 @endauth
                 @else
